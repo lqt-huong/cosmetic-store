@@ -1,0 +1,11 @@
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\bin\Debug\BLL.dll
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\bin\Debug\BLL.pdb
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\obj\Debug\BLL.dll
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\obj\Debug\BLL.pdb
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\bin\Debug\DAL.dll
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\bin\Debug\ValueObject.dll
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\bin\Debug\DAL.pdb
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\bin\Debug\ValueObject.pdb
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\obj\Debug\BLL.csproj.CopyComplete
