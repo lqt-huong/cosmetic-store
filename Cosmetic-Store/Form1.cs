@@ -13,7 +13,6 @@ namespace Cosmetic_Store
     public partial class Form1 : Form
     {
         static Form1 form;
-       
         public Form1()
         {
             InitializeComponent();
@@ -26,7 +25,6 @@ namespace Cosmetic_Store
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -36,29 +34,52 @@ namespace Cosmetic_Store
 
         private void btnQLNS_Click(object sender, EventArgs e)
         {
-            ChangeControlTo(new QuanLyNhanSu());
-        }
-        public static void ChangeControlTo(UserControl control)
-        {
-            form.Controls.Clear();
-            form.Controls.Add(control);
-           
-        }
+            QuanLyNhanSu qlns = new QuanLyNhanSu();
+            qlns.Dock = DockStyle.Fill;
+            ChangeControlTo(qlns);
 
+            
+        }
+        public void ChangeControlTo(UserControl control)
+        {
+            pnlContainer.Controls.Clear();
+            pnlContainer.Controls.Add(control);
+        }
 
         private void btnQLTK_Click(object sender, EventArgs e)
         {
-            ChangeControlTo(new QuanLyTaiKhoan());
+            QuanLyTaiKhoan qltk = new QuanLyTaiKhoan();
+            qltk.Dock = DockStyle.Fill;
+            ChangeControlTo(qltk);
         }
 
         private void btnQLK_Click(object sender, EventArgs e)
         {
-            ChangeControlTo(new QuanLyKho());
+            QuanLyKho qlk = new QuanLyKho();
+            qlk.Dock = DockStyle.Fill;
+            ChangeControlTo(qlk);
         }
 
         private void btnQLKD_Click(object sender, EventArgs e)
         {
-            ChangeControlTo(new QuanLyKinhDoanh());
+            QuanLyKinhDoanh qlkd = new QuanLyKinhDoanh();
+            qlkd.Dock = DockStyle.Fill;
+            ChangeControlTo(qlkd);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

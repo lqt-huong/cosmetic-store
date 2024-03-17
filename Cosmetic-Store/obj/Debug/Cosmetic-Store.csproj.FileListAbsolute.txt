@@ -17,3 +17,4 @@ F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\obj\
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\obj\Debug\Cosmetic_Store.QuanLyKho.resources
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\obj\Debug\Cosmetic_Store.QuanLyKinhDoanh.resources
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\obj\Debug\Cosmetic_Store.QuanLyTaiKhoan.resources
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\obj\Debug\Cosmetic_Store.LoginForm.resources
