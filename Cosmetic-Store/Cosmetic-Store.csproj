@@ -96,12 +96,6 @@
     <Compile Include="QuanLyTaiKhoan.Designer.cs">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="TaiKhoan.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="TaiKhoan.Designer.cs">
-      <DependentUpon>TaiKhoan.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,9 +126,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyTaiKhoan.resx">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TaiKhoan.resx">
-      <DependentUpon>TaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
