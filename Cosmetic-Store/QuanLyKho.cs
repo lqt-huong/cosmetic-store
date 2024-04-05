@@ -21,5 +21,33 @@ namespace Cosmetic_Store
         {
             Application.Exit();
         }
-    }
+
+		private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+		{
+
+		}
+
+		private void pnlQLKho_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+		public void ChangePanel(UserControl userControl)
+		{
+			pnlQLKho.Controls.Clear();
+			pnlQLKho.Controls.Add(userControl);
+		}
+
+		
+		private void TSMenu_QLNhaCungCap_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void TSMenu_QLSanPham_Click(object sender, EventArgs e)
+		{
+			QLSanPham qlsp = new QLSanPham();
+			qlsp.Dock = DockStyle.Fill;
+			ChangePanel(qlsp);
+		}
+	}
 }
