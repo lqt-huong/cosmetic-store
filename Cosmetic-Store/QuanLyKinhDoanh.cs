@@ -51,7 +51,10 @@ namespace Cosmetic_Store
                                                 "JOIN Category c ON p.CategoryID = c.CategoryID " +
                                                 "JOIN ProductVariety pv ON pv.ProductID = p.ProductID " +
                                                 "JOIN BillDetails bd ON bd.VarietyID = pv.VarietyID " +
-                                                "JOIN SaleBill sb ON sb.BillID = bd.BillID ", con);
+                                                "JOIN SaleBill sb ON sb.BillID = bd.BillID " +
+                                                "WHERE sb.isDeleted = 0 " +
+                                                "GROUP BY p.ProductID, p.ProductName, c.CategoryName, pv.Volume, pv.Price, bd.Quantity, sb.Date " +
+                                                "ORDER BY sb.Date", con);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -137,12 +140,15 @@ namespace Cosmetic_Store
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT p.ProductID AS 'Mã sản phẩm', p.ProductName AS 'Tên sản phẩm', c.CategoryName AS 'Loại', pv.Volume AS 'Dung tích (g)', pv.Price AS 'Giá', bd.Quantity AS 'Số lượng', sb.Date AS 'Ngày' " +
+                SqlCommand cmd = new SqlCommand("SELECT p.ProductID AS 'Mã sản phẩm', p.ProductName AS 'Tên sản phẩm', c.CategoryName AS 'Loại', pv.Volume AS 'Dung tích (g)', pv.Price AS 'Giá', SUM(bd.Quantity) AS 'Số lượng', sb.Date AS 'Ngày' " +
                                                 "FROM Product p " +
                                                 "JOIN Category c ON p.CategoryID = c.CategoryID " +
                                                 "JOIN ProductVariety pv ON pv.ProductID = p.ProductID " +
                                                 "JOIN BillDetails bd ON bd.VarietyID = pv.VarietyID " +
-                                                "JOIN SaleBill sb ON sb.BillID = bd.BillID ", con);
+                                                "JOIN SaleBill sb ON sb.BillID = bd.BillID " +
+                                                "WHERE sb.isDeleted = 0 " +
+                                                "GROUP BY p.ProductID, p.ProductName, c.CategoryName, pv.Volume, pv.Price, bd.Quantity, sb.Date " +
+                                                "ORDER BY sb.Date", con);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -162,8 +168,11 @@ namespace Cosmetic_Store
                 }
                 dataGridView1.DataSource = dt;
 
-                SqlCommand cmdDT = new SqlCommand("SELECT sb.Date AS 'Ngày', sb.TotalValue AS 'Tổng tiền' " +
-                                                "FROM SaleBill sb", con);
+                SqlCommand cmdDT = new SqlCommand("SELECT sb.Date AS 'Ngày', SUM(sb.TotalValue) AS 'Tổng tiền' " +
+                                                "FROM SaleBill sb " +
+                                                "WHERE sb.isDeleted = 0 " +
+                                                "GROUP BY sb.Date " +
+                                                "ORDER BY sb.Date", con);
                 SqlDataAdapter adapterDT = new SqlDataAdapter(cmdDT);
                 DataTable dtDT = new DataTable();
                 adapterDT.Fill(dtDT);
@@ -203,14 +212,16 @@ namespace Cosmetic_Store
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT p.ProductID AS 'Mã sản phẩm', p.ProductName AS 'Tên sản phẩm', c.CategoryName AS 'Loại', pv.Volume AS 'Dung tích (g)', pv.Price AS 'Giá', bd.Quantity AS 'Số lượng', @inputDate AS 'Ngày', " + quarter + " AS Quý, " + year + " AS Năm " +
+                SqlCommand cmd = new SqlCommand("SELECT p.ProductID AS 'Mã sản phẩm', p.ProductName AS 'Tên sản phẩm', c.CategoryName AS 'Loại', pv.Volume AS 'Dung tích (g)', pv.Price AS 'Giá', SUM(bd.Quantity) AS 'Số lượng', @inputDate AS 'Ngày', " + quarter + " AS Quý, " + year + " AS Năm " +
                                                     "FROM Product p " +
                                                     "JOIN Category c ON p.CategoryID = c.CategoryID " +
                                                     "JOIN ProductVariety pv ON pv.ProductID = p.ProductID " +
                                                     "JOIN BillDetails bd ON bd.VarietyID = pv.VarietyID " +
                                                     "JOIN SaleBill sb ON sb.BillID = bd.BillID " +
                                                     //"WHERE sb.Date LIKE @inputDate", con);
-                                                    "WHERE CONVERT(date, sb.Date) = @inputDate", con);
+                                                    "WHERE CONVERT(date, sb.Date) = @inputDate AND sb.isDeleted = 0 " +
+                                                    "GROUP BY p.ProductID, p.ProductName, c.CategoryName, pv.Volume, pv.Price, bd.Quantity, sb.Date " +
+                                                    "ORDER BY sb.Date", con);
                 cmd.Parameters.AddWithValue("@inputDate", date);
                 //cmd.Parameters.AddWithValue("@Ngày", date);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -284,8 +295,11 @@ namespace Cosmetic_Store
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT sb.Date AS 'Ngày', sb.TotalValue AS 'Tổng tiền' " +
-                                                "FROM SaleBill sb", con);
+                SqlCommand cmd = new SqlCommand("SELECT sb.Date AS 'Ngày', SUM(sb.TotalValue) AS 'Tổng tiền' " +
+                                                "FROM SaleBill sb " +
+                                                "WHERE sb.isDeleted = 0 " +
+                                                "GROUP BY sb.Date " +
+                                                "ORDER BY sb.Date", con);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -317,7 +331,6 @@ namespace Cosmetic_Store
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //SqlCommand cmd = new SqlCommand("SELECT bd.Quantity AS 'Số lượng', @inputDate AS 'Ngày', " + quarter + " AS Quý, " + year + " AS Năm " +
             string inputDate = textBox2.Text;
             DateTime date = DateTime.Parse(inputDate);
             int quarter = (date.Day - 1) / 3 + 1; // Xác định quý từ tháng
@@ -326,10 +339,11 @@ namespace Cosmetic_Store
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT @inputDate AS 'Ngày', sb.TotalValue AS 'Tổng tiền', " + quarter + " AS Quý, " + year + " AS Năm " +
+                SqlCommand cmd = new SqlCommand("SELECT @inputDate AS 'Ngày', SUM(sb.TotalValue) AS 'Tổng tiền', " + quarter + " AS Quý, " + year + " AS Năm " +
                                                 "FROM SaleBill sb " +
-                                                    //"WHERE sb.Date LIKE @inputDate", con);
-                                                "WHERE CONVERT(date, sb.Date) = @inputDate", con);
+                                                "WHERE CONVERT(date, sb.Date) = @inputDate AND sb.isDeleted = 0 " +
+                                                "GROUP BY sb.Date " +
+                                                "ORDER BY sb.Date", con);
                 cmd.Parameters.AddWithValue("@inputDate", date);
                 //cmd.Parameters.AddWithValue("@Ngày", date);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -345,6 +359,11 @@ namespace Cosmetic_Store
             {
                 con.Close();
             }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
