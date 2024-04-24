@@ -29,7 +29,7 @@ namespace Cosmetic_Store
         {
             InitializeComponent();
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
-        }               
+        }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
@@ -236,8 +236,8 @@ namespace Cosmetic_Store
             finally
             {
                 con.Close();
-            }        
-    }
+            }
+        }
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -365,7 +365,39 @@ namespace Cosmetic_Store
         {
 
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT sb.Date AS 'Ngày', p.ProductName AS 'Tên sản phẩm', pv.Price AS 'Giá', SUM(bd.Quantity) AS 'Số lượng' " +
+                                               "FROM Product p " +
+                                               "JOIN Category c ON p.CategoryID = c.CategoryID " +
+                                               "JOIN ProductVariety pv ON pv.ProductID = p.ProductID " +
+                                               "JOIN BillDetails bd ON bd.VarietyID = pv.VarietyID " +
+                                               "JOIN SaleBill sb ON bd.BillID = sb.BillID " +
+                                               "GROUP BY sb.Date, p.ProductName, pv.Price " +
+                                               "ORDER BY sb.Date", con);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                // Tạo một form mới để hiển thị dữ liệu
+                ShowDataForm newDataForm = new ShowDataForm(dt);
+                newDataForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }
-    
+
+
 

@@ -52,3 +52,6 @@ D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.csproj.CoreComp
 D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.csproj.CopyComplete
 D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.exe
 D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.pdb
+D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic_Store.ShowDataForm.resources
+D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.csproj.SuggestedBindingRedirects.cache
+D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.exe.config
