@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BLL">
-      <HintPath>..\BLL\bin\Debug\BLL.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,9 +44,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ValueObject">
-      <HintPath>..\ValueObject\bin\Debug\ValueObject.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
@@ -64,14 +58,14 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PhanQuyen.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PhanQuyen.Designer.cs">
-      <DependentUpon>PhanQuyen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLHoaDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QLHoaDon.Designer.cs">
+      <DependentUpon>QLHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanLyKho.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,6 +84,12 @@
     <Compile Include="QuanLyNhanSu.Designer.cs">
       <DependentUpon>QuanLyNhanSu.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyNhanSuCopy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyNhanSuCopy.Designer.cs">
+      <DependentUpon>QuanLyNhanSuCopy.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanLyTaiKhoan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,9 +102,6 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PhanQuyen.resx">
-      <DependentUpon>PhanQuyen.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -115,6 +112,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QLHoaDon.resx">
+      <DependentUpon>QLHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuanLyKho.resx">
       <DependentUpon>QuanLyKho.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNhanSu.resx">
       <DependentUpon>QuanLyNhanSu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyNhanSuCopy.resx">
+      <DependentUpon>QuanLyNhanSuCopy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyTaiKhoan.resx">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
@@ -145,6 +148,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{dc98f079-1810-41d4-aa2e-3e351efb3f28}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ValueObject\ValueObject.csproj">
+      <Project>{fbf0b77d-c99f-4ded-a568-cbfab0949b66}</Project>
+      <Name>ValueObject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
