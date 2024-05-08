@@ -8,7 +8,7 @@ using ValueObject;
 
 namespace DAL
 {
-    class PermissionGrantingDAL
+    public class PermissionGrantingDAL
     {
         DatabaseConnection dataServices = new DatabaseConnection();
         DataTable dataTable;
@@ -21,6 +21,25 @@ namespace DAL
         {
             List<PermissionGranting> dsQuyen = new List<PermissionGranting>();
             string sql = $"SELECT ct.PermissionID, ct.FunctionID FROM PermissionGranting ct, Account tk WHERE tk.PermissionID = ct.PermissionID AND tk.Username = '{tenTK}'";
+            if (!dataServices.OpenDB()) return null;
+            dataTable = dataServices.RunQuery(sql);
+            PermissionGranting chiTietPhanQuyen;
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                chiTietPhanQuyen = new PermissionGranting();
+                chiTietPhanQuyen.PermissionID = (int)dataTable.Rows[i]["PermissionID"];
+                chiTietPhanQuyen.FunctionID = (int)dataTable.Rows[i]["FunctionID"];
+                dsQuyen.Add(chiTietPhanQuyen);
+            }
+
+            return dsQuyen;
+        }
+
+        public List<PermissionGranting> GetCTPhanQuyen(int maQuyen)
+        {
+            List<PermissionGranting> dsQuyen = new List<PermissionGranting>();
+            string sql = $"SELECT ct.PermissionID, ct.FunctionID FROM PermissionGranting ct WHERE ct.PermissionID = '{maQuyen}'";
             if (!dataServices.OpenDB()) return null;
             dataTable = dataServices.RunQuery(sql);
             PermissionGranting chiTietPhanQuyen;

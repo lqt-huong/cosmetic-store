@@ -8,7 +8,7 @@ using ValueObject;
 
 namespace DAL
 {
-    class FunctionDAL
+    public class FunctionDAL
     {
         DatabaseConnection dataServices = new DatabaseConnection();
         DataTable dataTable;
@@ -18,7 +18,7 @@ namespace DAL
 
         }
 
-        public List<Function> getAll()
+        public List<Function> GetAll()
         {
             List<Function> list = new List<Function>();
             string sql = "SELECT * FROM Function WHERE IsDeleted = false";
@@ -37,7 +37,15 @@ namespace DAL
             return list;
         }
 
-        public List<Function> getChucNang(int maQuyen)
+        public string GetTenCN(int maCN)
+        {
+            string sql = $"SELECT FunctionName FROM Function WHERE FunctionID = {maCN}";
+            dataTable = dataServices.RunQuery(sql);
+
+            return dataTable.Rows[0]["FunctionName"].ToString();
+        }
+
+        public List<Function> GetChucNang(int maQuyen)
         {
             List<Function> list = new List<Function>();
             string sql = $"SELECT cn.FunctionID, cn.FunctionName FROM Function cn, PermissionGranting q WHERE q.FunctionID = cn.FunctionID AND q.PermissionID = {maQuyen}";

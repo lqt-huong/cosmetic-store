@@ -8,7 +8,7 @@ using ValueObject;
 
 namespace DAL
 {
-    class PermissionDAL
+    public class PermissionDAL
     {
         DatabaseConnection dataServices = new DatabaseConnection();
         DataTable dataTable;
@@ -17,7 +17,7 @@ namespace DAL
         {
         }
 
-        public List<Permission> getAll()
+        public List<Permission> GetAll()
         {
             List<Permission> list = new List<Permission>();
             string sql = "SELECT * FROM Permission WHERE IsDeleted = false";
