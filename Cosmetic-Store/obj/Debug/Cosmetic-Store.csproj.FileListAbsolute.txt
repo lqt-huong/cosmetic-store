@@ -40,3 +40,8 @@ C:\Users\ADMIN\source\repos\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Sto
 C:\Users\ADMIN\source\repos\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.pdb
 C:\Users\ADMIN\source\repos\cosmetic-store\Cosmetic-Store\bin\Debug\DAL.dll
 C:\Users\ADMIN\source\repos\cosmetic-store\Cosmetic-Store\bin\Debug\DAL.pdb
+D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.csproj.AssemblyReference.cache
+D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.csproj.SuggestedBindingRedirects.cache
+D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.exe.config
+D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.exe
+D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.pdb
