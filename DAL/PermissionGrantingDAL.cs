@@ -15,6 +15,7 @@ namespace DAL
 
         public PermissionGrantingDAL()
         {
+            dataServices.OpenDB();
         }
 
         public List<PermissionGranting> QuyenTK(string tenTK)
@@ -57,7 +58,7 @@ namespace DAL
 
         public bool Insert(PermissionGranting quyen)
         {
-            string sql = $"INSERT INTO PermissionGranting(PermisisonID, FunctionID) VALUES ({quyen.PermissionID}, {quyen.FunctionID})";
+            string sql = $"INSERT INTO PermissionGranting(PermissionID, FunctionID) VALUES ({quyen.PermissionID}, {quyen.FunctionID})";
             try
             {
                 dataServices.ExecuteNonQuery(sql);

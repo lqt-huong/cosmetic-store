@@ -34,9 +34,10 @@ namespace Cosmetic_Store
             InitializeComponent();
             listTK = bllTK.GetAll();
             listPQ = bllPQ.GetAll();
-            listNV = bllnv.GetAllStaffs();
+            listNV = bllnv.GetAllStaff();
             LoadDataGridTK();
             LoadDataGridPQ();
+            LoadDataGridNV();
             LoadComboboxChucNang();
         }
 
@@ -49,9 +50,9 @@ namespace Cosmetic_Store
 
                 newRow.CreateCells(dgvNhanVien);
                 newRow.Cells[0].Value = listNV[i].StaffID;
-                newRow.Cells[0].Value = listNV[i].FullName;
-                newRow.Cells[0].Value = listNV[i].DoB.ToString();
-                newRow.Cells[0].Value = listNV[i].Address;
+                newRow.Cells[1].Value = listNV[i].FullName;
+                newRow.Cells[2].Value = listNV[i].DOB.ToString();
+                newRow.Cells[3].Value = listNV[i].Address;
 
                 dgvNhanVien.Rows.Add(newRow);
             }
@@ -59,6 +60,7 @@ namespace Cosmetic_Store
 
         private void LoadDataGridTK()
         {
+            listTK = bllTK.GetAll();
             dgvTaiKhoan.Rows.Clear();
             for (int i = 0; i < listTK.Count; i++)
             {
@@ -76,6 +78,7 @@ namespace Cosmetic_Store
 
         private void LoadDataGridPQ()
         {
+            listPQ = bllPQ.GetAll();
             dgvPhanQuyen.Rows.Clear();
             for (int i = 0; i < listPQ.Count; i++)
             {
@@ -122,14 +125,18 @@ namespace Cosmetic_Store
 
         private void dgvPhanQuyen_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int maPQ = Convert.ToInt32(dgvPhanQuyen.SelectedRows[0].Cells[0].Value);
-            txtMaPhanQuyen.Text = dgvPhanQuyen.SelectedRows[0].Cells[0].Value.ToString();
-            txtTenPhanQuyen.Text = dgvPhanQuyen.SelectedRows[0].Cells[1].Value.ToString();
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check if a valid row is clicked
+            {
+                //Get the DataGridViewRow corresponding to the clicked row
+                DataGridViewRow row = dgvPhanQuyen.Rows[e.RowIndex];
+                int maPQ = Convert.ToInt32(row.Cells["colMaPQ"].Value);
 
-            LoadDataGridCTPQ(maPQ);
-            selectedPermission = maPQ;
+                txtMaPhanQuyen.Text = row.Cells["colMaPQ"].Value.ToString();
+                txtTenPhanQuyen.Text = row.Cells["colTenPQ"].Value.ToString();
 
-
+                LoadDataGridCTPQ(maPQ);
+                selectedPermission = maPQ;
+            }
         }
 
         private void LoadComboboxChucNang()
@@ -204,7 +211,7 @@ namespace Cosmetic_Store
                 }
                 else
                 {
-                    Permission phanQuyen = new Permission(Convert.ToInt32(txtMaPhanQuyen.Text), txtTenPhanQuyen.Text);
+                    Permission phanQuyen = new Permission(Convert.ToInt32(txtMaPhanQuyen.Text), txtTenPhanQuyen.Text, 0);
                     MessageBox.Show(bllPQ.Update(phanQuyen), "Thông báo");
                     isUpdating = false;
                     btnXacNhanPQ.Enabled = false;
@@ -219,8 +226,14 @@ namespace Cosmetic_Store
 
         private void dgvChiTietPhanQuyen_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            cbxMaChucNang.SelectedItem = Convert.ToInt32(dgvPhanQuyen.SelectedRows[0].Cells[0].Value);
-            txtTenChucNang.Text = dgvChiTietPhanQuyen.SelectedRows[0].Cells[1].Value.ToString();
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check if a valid row is clicked
+            {
+                //Get the DataGridViewRow corresponding to the clicked row
+                DataGridViewRow row = dgvChiTietPhanQuyen.Rows[e.RowIndex];
+
+                cbxMaChucNang.SelectedItem = row.Cells["colMaCN_CT"].Value.ToString();
+                cbxMaChucNang.Text = row.Cells["colMaCN_CT"].Value.ToString();
+            }
         }
 
         private void cbxMaChucNang_SelectionChangeCommitted(object sender, EventArgs e)
@@ -275,13 +288,13 @@ namespace Cosmetic_Store
             {
                 MessageBox.Show("Vui lòng chọn chức năng cần xóa!", "Thông báo");
             }
-            else if (!bllCTPQ.TrungMa(new PermissionGranting(selectedPermission, Convert.ToInt32(cbxMaChucNang.SelectedItem))))
+            else if (!bllCTPQ.TrungMa(new PermissionGranting(selectedPermission, Convert.ToInt32(cbxMaChucNang.Text))))
             {
                 MessageBox.Show("Chức năng được chọn không có trong phân quyền!", "Thông báo");
             }
             else
             {
-                MessageBox.Show(bllCTPQ.Delete(new PermissionGranting(selectedPermission, Convert.ToInt32(cbxMaChucNang.SelectedItem))), "Thông báo");
+                MessageBox.Show(bllCTPQ.Delete(new PermissionGranting(selectedPermission, Convert.ToInt32(cbxMaChucNang.Text))), "Thông báo");
                 isDeleting = false;
 
                 btnThemCT.Enabled = true;
@@ -294,10 +307,15 @@ namespace Cosmetic_Store
 
         private void dgvTaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtTenTaiKhoan.Text = dgvPhanQuyen.SelectedRows[0].Cells[0].Value.ToString();
-            txtMatKhau.Text = dgvPhanQuyen.SelectedRows[0].Cells[1].Value.ToString();
-            txtMaNhanVien.Text = dgvPhanQuyen.SelectedRows[0].Cells[2].Value.ToString();
-            cbxPhanQuyen.SelectedItem= dgvPhanQuyen.SelectedRows[0].Cells[3].Value.ToString();
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check if a valid row is clicked
+            {
+                //Get the DataGridViewRow corresponding to the clicked row
+                DataGridViewRow row = dgvTaiKhoan.Rows[e.RowIndex];
+                txtTenTaiKhoan.Text = row.Cells["colUsername"].Value.ToString();
+                txtMatKhau.Text = row.Cells["colPassword"].Value.ToString();
+                txtMaNhanVien.Text = row.Cells["colStaffID"].Value.ToString();
+                cbxPhanQuyen.Text = row.Cells["colPermissionID"].Value.ToString();
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -312,7 +330,7 @@ namespace Cosmetic_Store
             }
             else
             {
-                Account tk = new Account(txtTenTaiKhoan.Text, txtMatKhau.Text, Convert.ToInt32(txtMaNhanVien.Text), Convert.ToInt32(cbxPhanQuyen.SelectedItem));
+                Account tk = new Account(txtTenTaiKhoan.Text, txtMatKhau.Text, Convert.ToInt32(txtMaNhanVien.Text), Convert.ToInt32(cbxPhanQuyen.Text),0);
                 MessageBox.Show(bllTK.Insert(tk), "Thông báo");
                 LoadDataGridTK();
             }
@@ -373,7 +391,7 @@ namespace Cosmetic_Store
                 }
                 else
                 {
-                    Account tk = new Account(txtTenTaiKhoan.Text, txtMatKhau.Text, Convert.ToInt32(txtMaNhanVien.Text), Convert.ToInt32(cbxPhanQuyen.SelectedItem));
+                    Account tk = new Account(txtTenTaiKhoan.Text, txtMatKhau.Text, Convert.ToInt32(txtMaNhanVien.Text), Convert.ToInt32(cbxPhanQuyen.Text),0);
                     MessageBox.Show(bllTK.Update(tk), "Thông báo");
                     LoadDataGridTK();
                     isUpdating = false;
@@ -412,18 +430,23 @@ namespace Cosmetic_Store
 
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtMaNhanVien.Text = dgvPhanQuyen.SelectedRows[0].Cells[0].Value.ToString();
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check if a valid row is clicked
+            {
+                //Get the DataGridViewRow corresponding to the clicked row
+                DataGridViewRow row = dgvNhanVien.Rows[e.RowIndex];
+                txtMaNhanVien.Text = row.Cells["colMaNV"].Value.ToString();
+            }
         }
 
         private void btnThemPQ_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(txtTenPhanQuyen.Text))
             {
-                MessageBox.Show("Không được để trống Mã phân quyền!", "Thông báo");
+                MessageBox.Show("Không được để trống tên phân quyền!", "Thông báo");
             }
             else
             {
-                Permission phanQuyen = new Permission(bllPQ.NextID(), txtTenPhanQuyen.Text);
+                Permission phanQuyen = new Permission(bllPQ.NextID(), txtTenPhanQuyen.Text, 0);
                 MessageBox.Show(bllPQ.Insert(phanQuyen), "Thông báo");
                 LoadDataGridPQ();
             }

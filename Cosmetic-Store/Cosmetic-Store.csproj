@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BLL">
-      <HintPath>..\BLL\bin\Debug\BLL.dll</HintPath>
-    </Reference>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
@@ -91,9 +88,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ValueObject">
-      <HintPath>..\ValueObject\bin\Debug\ValueObject.dll</HintPath>
-    </Reference>
     <Reference Include="ZstdSharp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
       <HintPath>..\packages\ZstdSharp.Port.0.7.1\lib\net461\ZstdSharp.dll</HintPath>
     </Reference>
@@ -255,6 +249,14 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{dc98f079-1810-41d4-aa2e-3e351efb3f28}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{dc98f079-1810-41d4-aa2e-3e351efb3f28}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ValueObject\ValueObject.csproj">
+      <Project>{fbf0b77d-c99f-4ded-a568-cbfab0949b66}</Project>
+      <Name>ValueObject</Name>
     </ProjectReference>
     <ProjectReference Include="..\ValueObject\ValueObject.csproj">
       <Project>{fbf0b77d-c99f-4ded-a568-cbfab0949b66}</Project>

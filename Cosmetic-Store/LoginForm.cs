@@ -62,8 +62,8 @@ namespace Cosmetic_Store
             else
             {
                 Account account = blltk.TimTK(txtUsername.Text, txtPassword.Text);
-                Application.Exit();
-                Application.Run(new Form1(account));
+                this.Hide();
+                new Form1(account).Show();
             }
         }
     }
