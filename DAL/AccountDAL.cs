@@ -18,10 +18,10 @@ namespace DAL
 
         }
 
-        public List<Account> getAll()
+        public List<Account> GetAll()
         {
             List<Account> danhSach = new List<Account>();
-            string sql = "SELECT * FROM Account WHERE IsDeleted = false";
+            string sql = "SELECT * FROM Account WHERE IsDeleted = 0";
             if (!dataServices.OpenDB()) return null;
             dataTable = dataServices.RunQuery(sql);
             Account taiKhoan;

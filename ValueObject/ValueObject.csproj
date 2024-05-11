@@ -52,6 +52,7 @@
     <Compile Include="ImportDetails.cs" />
     <Compile Include="LeaveRequest.cs" />
     <Compile Include="MonthlySalary.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Permission.cs" />
     <Compile Include="PermissionGranting.cs" />
     <Compile Include="Position.cs" />
@@ -60,6 +61,22 @@
     <Compile Include="ProductVariety.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Staff.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\ValueObject.dll" />
+    <Content Include="bin\Debug\ValueObject.pdb" />
+    <Content Include="obj\Debug\ValueObject.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\ValueObject.dll" />
+    <Content Include="obj\Debug\ValueObject.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\ValueObject.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\ValueObject.csproj.CoreCompileInputs.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
     <Compile Include="test.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

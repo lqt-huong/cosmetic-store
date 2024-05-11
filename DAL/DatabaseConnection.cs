@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +12,7 @@ namespace DAL
 {
     public class DatabaseConnection
     {
+        //const string CONNECTION_STRING = @"Data Source=DESKTOP-1E6RROK\SQLEXPRESS;Initial Catalog=27032024_CosmeticStore;Integrated Security=True";
         const string CONNECTION_STRING = @"Data Source=josie\sqlexpress;Initial Catalog=cosmetic-store;Integrated Security=True"; //connection string của TH
         SqlConnection conn;
         SqlDataAdapter adapter;
@@ -29,6 +32,7 @@ namespace DAL
             catch (SqlException ex)
             {
                 conn = null;
+                Console.WriteLine($"Error: {ex.Number}");
                 Console.WriteLine($"Error: {ex.Message}");
                 return false;
             }

@@ -48,6 +48,10 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="FunctionDAL.cs" />
+    <Compile Include="PermissionDAL.cs" />
+    <Compile Include="PermissionGrantingDAL.cs" />
+    <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="FunctionDAL.cs" />
     <Compile Include="LeaveRequestDAL.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="PermissionDAL.cs" />
