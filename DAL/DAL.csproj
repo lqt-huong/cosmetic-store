@@ -45,12 +45,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountDAL.cs" />
+    <Compile Include="BillDetailsDAL.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="DataServices.cs" />
     <Compile Include="FunctionDAL.cs" />
     <Compile Include="PermissionDAL.cs" />
     <Compile Include="PermissionGrantingDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaleBillDAL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

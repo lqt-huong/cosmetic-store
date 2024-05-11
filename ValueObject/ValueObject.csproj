@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
-    <Compile Include="Bill.cs" />
+    <Compile Include="SaleBill.cs" />
     <Compile Include="BillDetails.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Class1.cs" />
