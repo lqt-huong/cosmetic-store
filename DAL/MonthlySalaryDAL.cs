@@ -14,7 +14,8 @@ namespace DAL
         DataTable dataTable;
 
         public MonthlySalaryDAL()
-        {   
+        {
+            dataServices.OpenDB();
         }
 
         public List<MonthlySalary> GetAll(int month, int year)

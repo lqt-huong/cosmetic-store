@@ -15,13 +15,13 @@ namespace DAL
 
         public FunctionDAL()
         {
-
+            dataServices.OpenDB();
         }
 
         public List<Function> GetAll()
         {
             List<Function> list = new List<Function>();
-            string sql = "SELECT * FROM Function WHERE IsDeleted = false";
+            string sql = "SELECT * FROM ChucNang WHERE IsDeleted = 0";
             if (!dataServices.OpenDB()) return null;
             dataTable = dataServices.RunQuery(sql);
             Function chucNang;
@@ -39,7 +39,7 @@ namespace DAL
 
         public string GetTenCN(int maCN)
         {
-            string sql = $"SELECT FunctionName FROM Function WHERE FunctionID = {maCN}";
+            string sql = $"SELECT FunctionName FROM ChucNang WHERE FunctionID = {maCN}";
             dataTable = dataServices.RunQuery(sql);
 
             return dataTable.Rows[0]["FunctionName"].ToString();
@@ -48,7 +48,7 @@ namespace DAL
         public List<Function> GetChucNang(int maQuyen)
         {
             List<Function> list = new List<Function>();
-            string sql = $"SELECT cn.FunctionID, cn.FunctionName FROM Function cn, PermissionGranting q WHERE q.FunctionID = cn.FunctionID AND q.PermissionID = {maQuyen}";
+            string sql = $"SELECT cn.FunctionID, cn.FunctionName FROM ChucNang cn, PermissionGranting q WHERE q.FunctionID = cn.FunctionID AND q.PermissionID = {maQuyen}";
             dataTable = dataServices.RunQuery(sql);
             Function chucNang;
 
@@ -65,7 +65,7 @@ namespace DAL
 
         public bool Insert(Function chucNang)
         {
-            string sql = "SELECT * FROM Function";
+            string sql = "SELECT * FROM ChucNang";
             dataTable = dataServices.RunQuery(sql);
             DataRow row = dataTable.NewRow();
             row["FunctionID"] = chucNang.FunctionID;
@@ -78,7 +78,7 @@ namespace DAL
 
         public bool Update(Function chucNang)
         {
-            string sql = "SELECT * FROM Function";
+            string sql = "SELECT * FROM ChucNang";
             dataTable = dataServices.RunQuery(sql);
             dataTable.PrimaryKey = new DataColumn[] { dataTable.Columns["FunctionID"] };
             DataRow row = dataTable.Rows.Find(chucNang.FunctionID);
@@ -99,7 +99,7 @@ namespace DAL
             }
             dataServices.Update(dataTable);
 
-            sql = $"UPDATE Function SET IsDeleted = true WHERE FunctionID = '{chucNang}'";
+            sql = $"UPDATE ChucNang SET IsDeleted = 1 WHERE FunctionID = '{chucNang}'";
             dataServices.ExecuteNonQuery(sql);
             return true;
         }

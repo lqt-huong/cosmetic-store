@@ -29,6 +29,7 @@ namespace Cosmetic_Store
                     ((Button)control).Click += Button_Click;
                 }
             }
+            loggedinAccount = account;
         }
 
         // Xử lý sự kiện Click cho tất cả các button
@@ -49,7 +50,6 @@ namespace Cosmetic_Store
             // Cập nhật previousButton thành button hiện tại
             previousButton = currentButton;
             form = this;
-            loggedinAccount = account;
         }
 
         
@@ -126,12 +126,9 @@ namespace Cosmetic_Store
             DialogResult result = MessageBox.Show("Xác nhận đăng xuất!", "Thông báo", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                Application.Exit();
-                Application.Run(new LoginForm());
+                this.Hide();
+                new LoginForm().Show();
             }
-        }
-    }
-            Application.Exit();
         }
 
         private void pnlContainer_Paint(object sender, PaintEventArgs e)
