@@ -16,8 +16,7 @@ namespace Cosmetic_Store
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-            //Application.Run(new TestConnectionDB());
+            Application.Run(new LoginForm());
         }
     }
 }

@@ -63,5 +63,10 @@ namespace BLL
         {
             return dal.TrungTenTK(tenTK);
         }
+
+        public bool KTMatKhau(string username, string password)
+        {
+            return dal.KTMatKhau(username, password);
+        }
     }
 }

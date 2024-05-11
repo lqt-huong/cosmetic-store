@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ValueObject;
 
 namespace Cosmetic_Store
 {
     public partial class Form1 : Form
     {
+        static Form1 form;
+        static Account loggedinAccount;
         private Button previousButton;
-        public Form1()
+        public Form1(Account account)
         {
             InitializeComponent();
             previousButton = null;
@@ -45,6 +48,8 @@ namespace Cosmetic_Store
             currentButton.ForeColor = Color.FromArgb(140, 120, 204);
             // Cập nhật previousButton thành button hiện tại
             previousButton = currentButton;
+            form = this;
+            loggedinAccount = account;
         }
 
         
@@ -67,6 +72,8 @@ namespace Cosmetic_Store
             QuanLyNhanSu qlns = new QuanLyNhanSu();
             qlns.Dock = DockStyle.Fill;
             ChangeControlTo(qlns);
+
+            
         }
         public void ChangeControlTo(UserControl control)
         {
@@ -107,6 +114,23 @@ namespace Cosmetic_Store
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Xác nhận thoát!", "Thông báo", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Xác nhận đăng xuất!", "Thông báo", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                Application.Exit();
+                Application.Run(new LoginForm());
+            }
+        }
+    }
             Application.Exit();
         }
 

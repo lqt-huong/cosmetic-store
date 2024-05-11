@@ -41,6 +41,9 @@ namespace Cosmetic_Store
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnQLKD = new System.Windows.Forms.Button();
+            this.btnQLK = new System.Windows.Forms.Button();
+            this.btnQLTK = new System.Windows.Forms.Button();
             this.btnQLNS = new System.Windows.Forms.Button();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -90,11 +93,16 @@ namespace Cosmetic_Store
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Location = new System.Drawing.Point(86, 503);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogout.Location = new System.Drawing.Point(86, 499);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(71, 27);
             this.btnLogout.Size = new System.Drawing.Size(85, 32);
             this.btnLogout.TabIndex = 13;
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnQLK
             // 
@@ -133,6 +141,8 @@ namespace Cosmetic_Store
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Location = new System.Drawing.Point(2, 503);
             this.btnExit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExit.Location = new System.Drawing.Point(9, 499);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(80, 32);
             this.btnExit.TabIndex = 12;
@@ -210,6 +220,47 @@ namespace Cosmetic_Store
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // btnQLKD
+            // 
+            this.btnQLKD.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLKD.Location = new System.Drawing.Point(0, 397);
+            this.btnQLKD.Name = "btnQLKD";
+            this.btnQLKD.Size = new System.Drawing.Size(177, 63);
+            this.btnQLKD.TabIndex = 4;
+            this.btnQLKD.Text = "Quản lý kinh doanh";
+            this.btnQLKD.UseVisualStyleBackColor = true;
+            this.btnQLKD.Click += new System.EventHandler(this.btnQLKD_Click);
+            // 
+            // btnQLK
+            // 
+            this.btnQLK.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLK.Location = new System.Drawing.Point(0, 343);
+            this.btnQLK.Name = "btnQLK";
+            this.btnQLK.Size = new System.Drawing.Size(177, 49);
+            this.btnQLK.TabIndex = 3;
+            this.btnQLK.Text = "Quản lý kho";
+            this.btnQLK.UseVisualStyleBackColor = true;
+            this.btnQLK.Click += new System.EventHandler(this.btnQLK_Click);
+            // 
+            // btnQLTK
+            // 
+            this.btnQLTK.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLTK.Location = new System.Drawing.Point(0, 287);
+            this.btnQLTK.Name = "btnQLTK";
+            this.btnQLTK.Size = new System.Drawing.Size(177, 49);
+            this.btnQLTK.TabIndex = 2;
+            this.btnQLTK.Text = "Quản lý tài khoản";
+            this.btnQLTK.UseVisualStyleBackColor = true;
+            this.btnQLTK.Click += new System.EventHandler(this.btnQLTK_Click);
+            this.pictureBox2.Image = global::Cosmetic_Store.Properties.Resources.user1;
+            this.pictureBox2.Location = new System.Drawing.Point(68, 86);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(26, 28);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // btnQLNS
             // 
             this.btnQLNS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
@@ -219,8 +270,10 @@ namespace Cosmetic_Store
             this.btnQLNS.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQLNS.ForeColor = System.Drawing.Color.White;
             this.btnQLNS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLNS.Location = new System.Drawing.Point(0, 229);
             this.btnQLNS.Location = new System.Drawing.Point(0, 218);
             this.btnQLNS.Name = "btnQLNS";
+            this.btnQLNS.Size = new System.Drawing.Size(177, 52);
             this.btnQLNS.Size = new System.Drawing.Size(177, 56);
             this.btnQLNS.TabIndex = 1;
             this.btnQLNS.Text = "Quản lý nhân sự";
@@ -233,10 +286,15 @@ namespace Cosmetic_Store
             this.pnlContainer.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlContainer.Location = new System.Drawing.Point(175, 0);
             this.pnlContainer.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlContainer.Location = new System.Drawing.Point(178, 0);
+            this.pnlContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlContainer.Name = "pnlContainer";
             this.pnlContainer.Size = new System.Drawing.Size(849, 576);
+            this.pnlContainer.Size = new System.Drawing.Size(846, 576);
             this.pnlContainer.TabIndex = 1;
             this.pnlContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContainer_Paint);
+            // 
             // 
             // Form1
             // 

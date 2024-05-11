@@ -114,6 +114,7 @@ namespace Cosmetic_Store
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "ĐĂNG NHẬP";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblRefresh
             // 
@@ -123,6 +124,7 @@ namespace Cosmetic_Store
             this.lblRefresh.Size = new System.Drawing.Size(58, 17);
             this.lblRefresh.TabIndex = 5;
             this.lblRefresh.Text = "Làm mới";
+            this.lblRefresh.Click += new System.EventHandler(this.lblRefresh_Click);
             // 
             // lblExit
             // 
