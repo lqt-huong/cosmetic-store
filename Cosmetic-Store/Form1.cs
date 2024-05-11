@@ -7,16 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ValueObject;
 
 namespace Cosmetic_Store
 {
     public partial class Form1 : Form
     {
         static Form1 form;
-        public Form1()
+        static Account loggedinAccount;
+        public Form1(Account account)
         {
             InitializeComponent();
             form = this;
+            loggedinAccount = account;
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -79,7 +82,21 @@ namespace Cosmetic_Store
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Xác nhận thoát!", "Thông báo", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Xác nhận đăng xuất!", "Thông báo", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                Application.Exit();
+                Application.Run(new LoginForm());
+            }
         }
     }
 }

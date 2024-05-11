@@ -52,7 +52,7 @@ namespace Cosmetic_Store
             this.label1.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(101, 114);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 49);
+            this.label1.Size = new System.Drawing.Size(180, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "ĐĂNG NHẬP";
             // 
@@ -114,22 +114,24 @@ namespace Cosmetic_Store
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "ĐĂNG NHẬP";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblRefresh
             // 
             this.lblRefresh.AutoSize = true;
             this.lblRefresh.Location = new System.Drawing.Point(291, 347);
             this.lblRefresh.Name = "lblRefresh";
-            this.lblRefresh.Size = new System.Drawing.Size(72, 21);
+            this.lblRefresh.Size = new System.Drawing.Size(58, 17);
             this.lblRefresh.TabIndex = 5;
             this.lblRefresh.Text = "Làm mới";
+            this.lblRefresh.Click += new System.EventHandler(this.lblRefresh_Click);
             // 
             // lblExit
             // 
             this.lblExit.AutoSize = true;
             this.lblExit.Location = new System.Drawing.Point(185, 426);
             this.lblExit.Name = "lblExit";
-            this.lblExit.Size = new System.Drawing.Size(50, 21);
+            this.lblExit.Size = new System.Drawing.Size(43, 17);
             this.lblExit.TabIndex = 5;
             this.lblExit.Text = "Thoát";
             this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
@@ -158,7 +160,7 @@ namespace Cosmetic_Store
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(411, 477);

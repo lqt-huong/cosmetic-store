@@ -101,5 +101,13 @@ namespace DAL
             if (dataTable.Rows.Count == 0) return false;
             return true;
         }
+
+        public bool KTMatKhau(string tenTK, string matKhau)
+        {
+            string sql = $"SELECT * FROM Account WHERE Username = '{tenTK}' AND Password = '{matKhau}'";
+            dataTable = dataServices.RunQuery(sql);
+            if (dataTable.Rows.Count == 0) return false;
+            return true;
+        }
     }
 }
