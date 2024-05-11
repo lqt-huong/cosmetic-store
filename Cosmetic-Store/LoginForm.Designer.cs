@@ -140,23 +140,20 @@ namespace Cosmetic_Store
             // 
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
-            this.txtUsername.Location = new System.Drawing.Point(81, 199);
-            this.txtUsername.Multiline = true;
+            this.txtUsername.Location = new System.Drawing.Point(81, 210);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(282, 28);
-            this.txtUsername.TabIndex = 6;
-            this.txtUsername.Text = "thienhuong153";
+            this.txtUsername.Size = new System.Drawing.Size(282, 17);
+            this.txtUsername.TabIndex = 7;
             // 
             // txtPassword
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
-            this.txtPassword.Location = new System.Drawing.Point(81, 273);
-            this.txtPassword.Multiline = true;
+            this.txtPassword.Location = new System.Drawing.Point(81, 284);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(282, 28);
-            this.txtPassword.TabIndex = 6;
-            this.txtPassword.Text = "*******";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(282, 17);
+            this.txtPassword.TabIndex = 8;
             // 
             // LoginForm
             // 

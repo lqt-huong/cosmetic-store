@@ -63,5 +63,21 @@ namespace DAL
             if (dataTable.Rows.Count == 0) return false;
             return true;
         }
+
+        public int GetSalary(int positionID)
+        {
+            string sql = $"SELECT Salary FROM Position WHERE PositionID = {positionID}";
+            dataTable = dataServices.RunQuery(sql);
+
+            return Convert.ToInt32(dataTable.Rows[0]["Salary"]);
+        }
+
+        public int GetPositionID(int staffID, int month, int year)
+        {
+            string sql = $"SELECT PositionID FROM Contract WHERE StaffID = {staffID} AND StartingDate <= '{year}-{month}-01 00:00:00'";
+            dataTable = dataServices.RunQuery(sql);
+
+            return Convert.ToInt32(dataTable.Rows[0]["PositionID"]);
+        }
     }
 }
