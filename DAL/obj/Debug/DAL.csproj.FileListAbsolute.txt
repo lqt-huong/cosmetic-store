@@ -7,3 +7,12 @@ F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\bin\Debug\Value
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\bin\Debug\ValueObject.pdb
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\obj\Debug\DAL.csproj.CopyComplete
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\ADMIN\source\repos\cosmetic-store\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\ADMIN\source\repos\cosmetic-store\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\source\repos\cosmetic-store\DAL\obj\Debug\DAL.dll
+C:\Users\ADMIN\source\repos\cosmetic-store\DAL\obj\Debug\DAL.pdb
+C:\Users\ADMIN\source\repos\cosmetic-store\DAL\bin\Debug\DAL.dll
+C:\Users\ADMIN\source\repos\cosmetic-store\DAL\bin\Debug\DAL.pdb
+C:\Users\ADMIN\source\repos\cosmetic-store\DAL\bin\Debug\ValueObject.dll
+C:\Users\ADMIN\source\repos\cosmetic-store\DAL\bin\Debug\ValueObject.pdb
+C:\Users\ADMIN\source\repos\cosmetic-store\DAL\obj\Debug\DAL.csproj.CopyComplete

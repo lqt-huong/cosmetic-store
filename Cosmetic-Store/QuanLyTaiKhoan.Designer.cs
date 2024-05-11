@@ -33,6 +33,10 @@ namespace Cosmetic_Store
             this.tabQLTaiKhoan = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
+            this.colMaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXacNhan = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -78,10 +82,6 @@ namespace Cosmetic_Store
             this.label7 = new System.Windows.Forms.Label();
             this.txtMaPhanQuyen = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.colMaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabQLTaiKhoan.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -146,6 +146,8 @@ namespace Cosmetic_Store
             // 
             // dgvNhanVien
             // 
+            this.dgvNhanVien.AllowUserToAddRows = false;
+            this.dgvNhanVien.AllowUserToDeleteRows = false;
             this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNhanVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMaNV,
@@ -155,10 +157,36 @@ namespace Cosmetic_Store
             this.dgvNhanVien.Location = new System.Drawing.Point(23, 166);
             this.dgvNhanVien.MultiSelect = false;
             this.dgvNhanVien.Name = "dgvNhanVien";
+            this.dgvNhanVien.ReadOnly = true;
             this.dgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNhanVien.Size = new System.Drawing.Size(391, 150);
             this.dgvNhanVien.TabIndex = 14;
             this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
+            // 
+            // colMaNV
+            // 
+            this.colMaNV.HeaderText = "Mã nhân viên";
+            this.colMaNV.Name = "colMaNV";
+            this.colMaNV.ReadOnly = true;
+            // 
+            // colHoTen
+            // 
+            this.colHoTen.HeaderText = "Họ tên";
+            this.colHoTen.Name = "colHoTen";
+            this.colHoTen.ReadOnly = true;
+            this.colHoTen.Width = 250;
+            // 
+            // colNgaySinh
+            // 
+            this.colNgaySinh.HeaderText = "Ngày sinh";
+            this.colNgaySinh.Name = "colNgaySinh";
+            this.colNgaySinh.ReadOnly = true;
+            // 
+            // colDiaChi
+            // 
+            this.colDiaChi.HeaderText = "Địa chỉ";
+            this.colDiaChi.Name = "colDiaChi";
+            this.colDiaChi.ReadOnly = true;
             // 
             // btnXacNhan
             // 
@@ -640,27 +668,6 @@ namespace Cosmetic_Store
             this.label8.Size = new System.Drawing.Size(142, 24);
             this.label8.TabIndex = 0;
             this.label8.Text = "Mã phân quyền";
-            // 
-            // colMaNV
-            // 
-            this.colMaNV.HeaderText = "Mã nhân viên";
-            this.colMaNV.Name = "colMaNV";
-            // 
-            // colHoTen
-            // 
-            this.colHoTen.HeaderText = "Họ tên";
-            this.colHoTen.Name = "colHoTen";
-            this.colHoTen.Width = 250;
-            // 
-            // colNgaySinh
-            // 
-            this.colNgaySinh.HeaderText = "Ngày sinh";
-            this.colNgaySinh.Name = "colNgaySinh";
-            // 
-            // colDiaChi
-            // 
-            this.colDiaChi.HeaderText = "Địa chỉ";
-            this.colDiaChi.Name = "colDiaChi";
             // 
             // QuanLyTaiKhoan
             // 
