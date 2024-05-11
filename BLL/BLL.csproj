@@ -50,6 +50,7 @@
     <Compile Include="AccountBLL.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="FunctionBLL.cs" />
+    <Compile Include="MonthlySalaryBLL.cs" />
     <Compile Include="PermissionBLL.cs" />
     <Compile Include="PermissionGrantingBLL.cs" />
     <Compile Include="LeaveRequestBLL.cs" />
