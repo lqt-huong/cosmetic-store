@@ -1,9 +1,9 @@
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\bin\Debug\DAL.dll
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\bin\Debug\DAL.pdb
-F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\obj\Debug\DAL.dll
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\obj\Debug\DAL.pdb
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\bin\Debug\ValueObject.dll
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\bin\Debug\ValueObject.pdb
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\obj\Debug\DAL.csproj.CopyComplete
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache

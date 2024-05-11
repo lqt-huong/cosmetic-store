@@ -40,3 +40,6 @@ C:\Users\ADMIN\source\repos\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Sto
 C:\Users\ADMIN\source\repos\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.csproj.CopyComplete
 C:\Users\ADMIN\source\repos\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.exe
 C:\Users\ADMIN\source\repos\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.pdb
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\bin\Debug\DAL.dll
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\bin\Debug\DAL.pdb
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\obj\Debug\Cosmetic_Store.TestConnectionDB.resources
