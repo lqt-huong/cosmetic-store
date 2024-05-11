@@ -15,12 +15,44 @@ namespace Cosmetic_Store
     {
         static Form1 form;
         static Account loggedinAccount;
+        private Button previousButton;
         public Form1(Account account)
         {
             InitializeComponent();
+            previousButton = null;
+
+            // Gán sự kiện Click cho tất cả các button trong form
+            foreach (Control control in panel1.Controls)
+            {
+                if (control is Button)
+                {
+                    ((Button)control).Click += Button_Click;
+                }
+            }
+        }
+
+        // Xử lý sự kiện Click cho tất cả các button
+        private void Button_Click(object sender, EventArgs e)
+        {
+            Button currentButton = (Button)sender;
+
+            if (previousButton != null)
+            {
+                // Reset màu của button trước đó
+                previousButton.BackColor = Color.FromArgb(146, 146, 214);
+                previousButton.ForeColor = Color.White;
+            }
+
+            // Thay đổi màu của button hiện tại
+            currentButton.BackColor = Color.White;
+            currentButton.ForeColor = Color.FromArgb(140, 120, 204);
+            // Cập nhật previousButton thành button hiện tại
+            previousButton = currentButton;
             form = this;
             loggedinAccount = account;
         }
+
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -97,6 +129,14 @@ namespace Cosmetic_Store
                 Application.Exit();
                 Application.Run(new LoginForm());
             }
+        }
+    }
+            Application.Exit();
+        }
+
+        private void pnlContainer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

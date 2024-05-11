@@ -30,7 +30,10 @@ namespace Cosmetic_Store
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnQLKD = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnQLK = new System.Windows.Forms.Button();
+            this.btnQLTK = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblQuyen = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
@@ -50,7 +53,10 @@ namespace Cosmetic_Store
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
+            this.panel1.Controls.Add(this.btnQLKD);
             this.panel1.Controls.Add(this.btnLogout);
+            this.panel1.Controls.Add(this.btnQLK);
+            this.panel1.Controls.Add(this.btnQLTK);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.lblQuyen);
             this.panel1.Controls.Add(this.lblUserName);
@@ -58,9 +64,6 @@ namespace Cosmetic_Store
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.btnQLKD);
-            this.panel1.Controls.Add(this.btnQLK);
-            this.panel1.Controls.Add(this.btnQLTK);
             this.panel1.Controls.Add(this.btnQLNS);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -68,26 +71,83 @@ namespace Cosmetic_Store
             this.panel1.Size = new System.Drawing.Size(177, 576);
             this.panel1.TabIndex = 0;
             // 
+            // btnQLKD
+            // 
+            this.btnQLKD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
+            this.btnQLKD.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(120)))), ((int)(((byte)(204)))));
+            this.btnQLKD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLKD.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLKD.ForeColor = System.Drawing.Color.White;
+            this.btnQLKD.Location = new System.Drawing.Point(0, 382);
+            this.btnQLKD.Name = "btnQLKD";
+            this.btnQLKD.Size = new System.Drawing.Size(177, 61);
+            this.btnQLKD.TabIndex = 4;
+            this.btnQLKD.Text = "Quản lý kinh doanh";
+            this.btnQLKD.UseVisualStyleBackColor = false;
+            this.btnQLKD.Click += new System.EventHandler(this.btnQLKD_Click);
+            // 
             // btnLogout
             // 
+            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Location = new System.Drawing.Point(86, 503);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Location = new System.Drawing.Point(86, 499);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(71, 27);
+            this.btnLogout.Size = new System.Drawing.Size(85, 32);
             this.btnLogout.TabIndex = 13;
             this.btnLogout.Text = "Đăng xuất";
+            this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnQLK
+            // 
+            this.btnQLK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
+            this.btnQLK.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(120)))), ((int)(((byte)(204)))));
+            this.btnQLK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLK.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLK.ForeColor = System.Drawing.Color.White;
+            this.btnQLK.Location = new System.Drawing.Point(0, 324);
+            this.btnQLK.Name = "btnQLK";
+            this.btnQLK.Size = new System.Drawing.Size(177, 61);
+            this.btnQLK.TabIndex = 3;
+            this.btnQLK.Text = "Quản lý kho";
+            this.btnQLK.UseVisualStyleBackColor = false;
+            this.btnQLK.Click += new System.EventHandler(this.btnQLK_Click);
+            // 
+            // btnQLTK
+            // 
+            this.btnQLTK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
+            this.btnQLTK.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(120)))), ((int)(((byte)(204)))));
+            this.btnQLTK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLTK.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLTK.ForeColor = System.Drawing.Color.White;
+            this.btnQLTK.Location = new System.Drawing.Point(0, 271);
+            this.btnQLTK.Name = "btnQLTK";
+            this.btnQLTK.Size = new System.Drawing.Size(177, 57);
+            this.btnQLTK.TabIndex = 2;
+            this.btnQLTK.Text = "Quản lý tài khoản";
+            this.btnQLTK.UseVisualStyleBackColor = false;
+            this.btnQLTK.Click += new System.EventHandler(this.btnQLTK_Click);
+            // 
             // btnExit
             // 
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(2, 503);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Location = new System.Drawing.Point(9, 499);
             this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(63, 27);
+            this.btnExit.Size = new System.Drawing.Size(80, 32);
             this.btnExit.TabIndex = 12;
             this.btnExit.Text = "Thoát";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lblQuyen
@@ -192,16 +252,29 @@ namespace Cosmetic_Store
             this.btnQLTK.Text = "Quản lý tài khoản";
             this.btnQLTK.UseVisualStyleBackColor = true;
             this.btnQLTK.Click += new System.EventHandler(this.btnQLTK_Click);
+            this.pictureBox2.Image = global::Cosmetic_Store.Properties.Resources.user1;
+            this.pictureBox2.Location = new System.Drawing.Point(68, 86);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(26, 28);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // btnQLNS
             // 
-            this.btnQLNS.BackColor = System.Drawing.Color.Transparent;
+            this.btnQLNS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
             this.btnQLNS.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnQLNS.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLNS.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(120)))), ((int)(((byte)(204)))));
+            this.btnQLNS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLNS.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLNS.ForeColor = System.Drawing.Color.White;
             this.btnQLNS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLNS.Location = new System.Drawing.Point(0, 229);
+            this.btnQLNS.Location = new System.Drawing.Point(0, 218);
             this.btnQLNS.Name = "btnQLNS";
             this.btnQLNS.Size = new System.Drawing.Size(177, 52);
+            this.btnQLNS.Size = new System.Drawing.Size(177, 56);
             this.btnQLNS.TabIndex = 1;
             this.btnQLNS.Text = "Quản lý nhân sự";
             this.btnQLNS.UseVisualStyleBackColor = false;
@@ -209,13 +282,19 @@ namespace Cosmetic_Store
             // 
             // pnlContainer
             // 
+            this.pnlContainer.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlContainer.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlContainer.Location = new System.Drawing.Point(175, 0);
+            this.pnlContainer.Margin = new System.Windows.Forms.Padding(2);
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlContainer.Location = new System.Drawing.Point(178, 0);
             this.pnlContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(849, 576);
             this.pnlContainer.Size = new System.Drawing.Size(846, 576);
             this.pnlContainer.TabIndex = 1;
+            this.pnlContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContainer_Paint);
+            // 
             // 
             // Form1
             // 
@@ -226,6 +305,7 @@ namespace Cosmetic_Store
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.IsMdiContainer = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
