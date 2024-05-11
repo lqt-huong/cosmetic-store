@@ -12,12 +12,42 @@ namespace Cosmetic_Store
 {
     public partial class Form1 : Form
     {
-        static Form1 form;
+        private Button previousButton;
         public Form1()
         {
             InitializeComponent();
-            form = this;
+            previousButton = null;
+
+            // Gán sự kiện Click cho tất cả các button trong form
+            foreach (Control control in panel1.Controls)
+            {
+                if (control is Button)
+                {
+                    ((Button)control).Click += Button_Click;
+                }
+            }
         }
+
+        // Xử lý sự kiện Click cho tất cả các button
+        private void Button_Click(object sender, EventArgs e)
+        {
+            Button currentButton = (Button)sender;
+
+            if (previousButton != null)
+            {
+                // Reset màu của button trước đó
+                previousButton.BackColor = Color.FromArgb(146, 146, 214);
+                previousButton.ForeColor = Color.White;
+            }
+
+            // Thay đổi màu của button hiện tại
+            currentButton.BackColor = Color.White;
+            currentButton.ForeColor = Color.FromArgb(140, 120, 204);
+            // Cập nhật previousButton thành button hiện tại
+            previousButton = currentButton;
+        }
+
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -37,8 +67,6 @@ namespace Cosmetic_Store
             QuanLyNhanSu qlns = new QuanLyNhanSu();
             qlns.Dock = DockStyle.Fill;
             ChangeControlTo(qlns);
-
-            
         }
         public void ChangeControlTo(UserControl control)
         {
@@ -80,6 +108,11 @@ namespace Cosmetic_Store
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void pnlContainer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
