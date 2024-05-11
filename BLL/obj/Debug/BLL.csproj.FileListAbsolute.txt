@@ -20,3 +20,14 @@ C:\Users\ADMIN\source\repos\cosmetic-store\BLL\bin\Debug\ValueObject.dll
 C:\Users\ADMIN\source\repos\cosmetic-store\BLL\bin\Debug\DAL.pdb
 C:\Users\ADMIN\source\repos\cosmetic-store\BLL\bin\Debug\ValueObject.pdb
 C:\Users\ADMIN\source\repos\cosmetic-store\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\HTTTDN\cosmetic-store\BLL\bin\Debug\BLL.dll
+D:\HTTTDN\cosmetic-store\BLL\bin\Debug\BLL.pdb
+D:\HTTTDN\cosmetic-store\BLL\bin\Debug\DAL.dll
+D:\HTTTDN\cosmetic-store\BLL\bin\Debug\ValueObject.dll
+D:\HTTTDN\cosmetic-store\BLL\bin\Debug\DAL.pdb
+D:\HTTTDN\cosmetic-store\BLL\bin\Debug\ValueObject.pdb
+D:\HTTTDN\cosmetic-store\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\HTTTDN\cosmetic-store\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\HTTTDN\cosmetic-store\BLL\obj\Debug\BLL.csproj.Up2Date
+D:\HTTTDN\cosmetic-store\BLL\obj\Debug\BLL.dll
+D:\HTTTDN\cosmetic-store\BLL\obj\Debug\BLL.pdb

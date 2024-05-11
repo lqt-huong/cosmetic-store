@@ -45,8 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountDAL.cs" />
+    <Compile Include="BillDetailsDAL.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="DataServices.cs" />
     <Compile Include="FunctionDAL.cs" />
     <Compile Include="MonthlySalaryDAL.cs" />
     <Compile Include="PermissionDAL.cs" />
@@ -66,6 +68,7 @@
   <ItemGroup>
     <Folder Include="bin\Debug\" />
     <Folder Include="obj\Release\" />
+    <Compile Include="SaleBillDAL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

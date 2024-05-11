@@ -8,17 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OfficeOpenXml;
-using System;
-using System.Data;
 using System.IO;
-using System.Windows.Forms;
 using System.Data.SqlClient;
 
 namespace Cosmetic_Store
 {
     public partial class QuanLyKinhDoanh : UserControl
     {
-        string connectstring = @"Data Source=YANG\SQLEXPRESS;Initial Catalog=cosmetic-store;Integrated Security=True";
+        string connectstring = @"Data Source=DESKTOP-D29FRPQ\MSSQL2022;Initial Catalog=cosmetic-store;Integrated Security=True";
         SqlConnection con;
         SqlCommand cmd;
         SqlDataAdapter adt;
