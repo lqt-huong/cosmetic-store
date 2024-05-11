@@ -1,6 +1,5 @@
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\ValueObject\bin\Debug\ValueObject.dll
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\ValueObject\bin\Debug\ValueObject.pdb
-F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\ValueObject\obj\Debug\ValueObject.csproj.AssemblyReference.cache
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\ValueObject\obj\Debug\ValueObject.csproj.CoreCompileInputs.cache
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\ValueObject\obj\Debug\ValueObject.dll
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\ValueObject\obj\Debug\ValueObject.pdb
