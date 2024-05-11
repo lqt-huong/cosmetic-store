@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountBLL.cs" />
+    <Compile Include="BillDetailsBLL.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="FunctionBLL.cs" />
     <Compile Include="MonthlySalaryBLL.cs" />
@@ -62,6 +63,7 @@
       <Project>{fbf0b77d-c99f-4ded-a568-cbfab0949b66}</Project>
       <Name>ValueObject</Name>
     </ProjectReference>
+    <Compile Include="SaleBillBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

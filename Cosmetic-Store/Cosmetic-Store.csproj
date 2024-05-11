@@ -160,6 +160,12 @@
     <Compile Include="ShowDataForm.Designer.cs">
       <DependentUpon>ShowDataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="testform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testform.Designer.cs">
+      <DependentUpon>testform.cs</DependentUpon>
+    </Compile>
     <Compile Include="_cosmetic_storeDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShowDataForm.resx">
       <DependentUpon>ShowDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testform.resx">
+      <DependentUpon>testform.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <EmbeddedResource Include="TestConnectionDB.resx">
