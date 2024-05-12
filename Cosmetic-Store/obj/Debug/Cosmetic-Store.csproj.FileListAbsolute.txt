@@ -41,3 +41,10 @@ C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\Cosmetic-Stor
 C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic_Store.QLSanPham.resources
 C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic_Store.QLNhaCungCap.resources
 C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic-Store.csproj.CopyComplete
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic_Store.Admin_QLSanPham.resources
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic_Store.QLDanhMucSP.resources
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic_Store.QLNhaCC.resources
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic_Store.QLNhapHang.resources
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic_Store.QLThongTinSanPham.resources
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic_Store.QL_DSPhieuNhap.resources
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic_Store.ThongKeSP.resources

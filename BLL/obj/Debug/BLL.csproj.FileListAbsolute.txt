@@ -9,3 +9,14 @@ F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\bin\Debug\Value
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\bin\Debug\DAL.pdb
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\bin\Debug\ValueObject.pdb
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\BLL\bin\Debug\BLL.dll
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\BLL\bin\Debug\BLL.pdb
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\BLL\bin\Debug\DAL.dll
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\BLL\bin\Debug\ValueObject.dll
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\BLL\bin\Debug\DAL.pdb
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\BLL\bin\Debug\ValueObject.pdb
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\BLL\obj\Debug\BLL.csproj.Up2Date
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\BLL\obj\Debug\BLL.dll
+C:\Users\Administration\source\repos\HTTTDN_LamThuy\cosmetic-store\BLL\obj\Debug\BLL.pdb

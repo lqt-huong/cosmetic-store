@@ -48,7 +48,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="CTHoaDonNhapBLL.cs" />
+    <Compile Include="LoaiSPBLL.cs" />
+    <Compile Include="NhaCungCapBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SanPhamBLL.cs" />
+    <Compile Include="HoaDonNhapBLL.cs" />
+    <Compile Include="ThongKeKhoBLL.cs" />
+    <Compile Include="ProductDetailBLL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

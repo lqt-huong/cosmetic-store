@@ -58,6 +58,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin_QLSanPham.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin_QLSanPham.Designer.cs">
+      <DependentUpon>Admin_QLSanPham.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,17 +78,41 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLLoaiSP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QLLoaiSP.Designer.cs">
+      <DependentUpon>QLLoaiSP.cs</DependentUpon>
+    </Compile>
     <Compile Include="QLNhaCungCap.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="QLNhaCungCap.Designer.cs">
       <DependentUpon>QLNhaCungCap.cs</DependentUpon>
     </Compile>
+    <Compile Include="QLNhapHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QLNhapHang.Designer.cs">
+      <DependentUpon>QLNhapHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="QLSanPham.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="QLSanPham.Designer.cs">
       <DependentUpon>QLSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QLThongTinSanPham.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QLThongTinSanPham.Designer.cs">
+      <DependentUpon>QLThongTinSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QL_DSPhieuNhap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QL_DSPhieuNhap.Designer.cs">
+      <DependentUpon>QL_DSPhieuNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="QuanLyKho.cs">
       <SubType>UserControl</SubType>
@@ -108,6 +138,15 @@
     <Compile Include="QuanLyTaiKhoan.Designer.cs">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThongKeSP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ThongKeSP.Designer.cs">
+      <DependentUpon>ThongKeSP.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin_QLSanPham.resx">
+      <DependentUpon>Admin_QLSanPham.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,11 +163,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QLLoaiSP.resx">
+      <DependentUpon>QLLoaiSP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QLNhaCungCap.resx">
       <DependentUpon>QLNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QLNhapHang.resx">
+      <DependentUpon>QLNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QLSanPham.resx">
       <DependentUpon>QLSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QLThongTinSanPham.resx">
+      <DependentUpon>QLThongTinSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QL_DSPhieuNhap.resx">
+      <DependentUpon>QL_DSPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyKho.resx">
       <DependentUpon>QuanLyKho.cs</DependentUpon>
@@ -141,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyTaiKhoan.resx">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKeSP.resx">
+      <DependentUpon>ThongKeSP.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

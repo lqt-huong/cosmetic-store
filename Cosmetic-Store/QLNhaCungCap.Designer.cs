@@ -31,24 +31,24 @@
 			this.groupBox_TimKiem = new System.Windows.Forms.GroupBox();
 			this.btnRefresh = new System.Windows.Forms.Button();
 			this.btnTim = new System.Windows.Forms.Button();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.txtTimKiem = new System.Windows.Forms.TextBox();
 			this.btnHuy = new System.Windows.Forms.Button();
-			this.btnCapNhat = new System.Windows.Forms.Button();
+			this.btnXacNhan = new System.Windows.Forms.Button();
 			this.btnXoa = new System.Windows.Forms.Button();
 			this.btnSua = new System.Windows.Forms.Button();
 			this.btnThem = new System.Windows.Forms.Button();
 			this.groupBox_TTNhaCungCap = new System.Windows.Forms.GroupBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.txtTenNCC = new System.Windows.Forms.TextBox();
-			this.txtID_NCC = new System.Windows.Forms.TextBox();
+			this.txtMaNCC = new System.Windows.Forms.TextBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.dgvNCC = new System.Windows.Forms.DataGridView();
 			this.ProviderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ProviderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.groupBox_TimKiem.SuspendLayout();
 			this.groupBox_TTNhaCungCap.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvNCC)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox_TimKiem
@@ -56,7 +56,7 @@
 			this.groupBox_TimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
 			this.groupBox_TimKiem.Controls.Add(this.btnRefresh);
 			this.groupBox_TimKiem.Controls.Add(this.btnTim);
-			this.groupBox_TimKiem.Controls.Add(this.textBox1);
+			this.groupBox_TimKiem.Controls.Add(this.txtTimKiem);
 			this.groupBox_TimKiem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox_TimKiem.ForeColor = System.Drawing.Color.White;
 			this.groupBox_TimKiem.Location = new System.Drawing.Point(15, 19);
@@ -64,7 +64,7 @@
 			this.groupBox_TimKiem.Size = new System.Drawing.Size(747, 57);
 			this.groupBox_TimKiem.TabIndex = 40;
 			this.groupBox_TimKiem.TabStop = false;
-			this.groupBox_TimKiem.Text = "Tìm kiếm sản phẩm";
+			this.groupBox_TimKiem.Text = "Tìm kiếm nhà cung cấp";
 			// 
 			// btnRefresh
 			// 
@@ -77,6 +77,7 @@
 			this.btnRefresh.TabIndex = 2;
 			this.btnRefresh.Text = "Làm mới";
 			this.btnRefresh.UseVisualStyleBackColor = false;
+			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
 			// 
 			// btnTim
 			// 
@@ -89,13 +90,14 @@
 			this.btnTim.TabIndex = 1;
 			this.btnTim.Text = "Tìm";
 			this.btnTim.UseVisualStyleBackColor = false;
+			this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
 			// 
-			// textBox1
+			// txtTimKiem
 			// 
-			this.textBox1.Location = new System.Drawing.Point(40, 22);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(422, 29);
-			this.textBox1.TabIndex = 0;
+			this.txtTimKiem.Location = new System.Drawing.Point(40, 22);
+			this.txtTimKiem.Name = "txtTimKiem";
+			this.txtTimKiem.Size = new System.Drawing.Size(422, 29);
+			this.txtTimKiem.TabIndex = 0;
 			// 
 			// btnHuy
 			// 
@@ -108,18 +110,20 @@
 			this.btnHuy.TabIndex = 45;
 			this.btnHuy.Text = "Hủy";
 			this.btnHuy.UseVisualStyleBackColor = false;
+			this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
 			// 
-			// btnCapNhat
+			// btnXacNhan
 			// 
-			this.btnCapNhat.BackColor = System.Drawing.Color.MediumSlateBlue;
-			this.btnCapNhat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnCapNhat.ForeColor = System.Drawing.Color.White;
-			this.btnCapNhat.Location = new System.Drawing.Point(173, 234);
-			this.btnCapNhat.Name = "btnCapNhat";
-			this.btnCapNhat.Size = new System.Drawing.Size(102, 30);
-			this.btnCapNhat.TabIndex = 44;
-			this.btnCapNhat.Text = "Cập nhật";
-			this.btnCapNhat.UseVisualStyleBackColor = false;
+			this.btnXacNhan.BackColor = System.Drawing.Color.MediumSlateBlue;
+			this.btnXacNhan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnXacNhan.ForeColor = System.Drawing.Color.White;
+			this.btnXacNhan.Location = new System.Drawing.Point(173, 234);
+			this.btnXacNhan.Name = "btnXacNhan";
+			this.btnXacNhan.Size = new System.Drawing.Size(102, 30);
+			this.btnXacNhan.TabIndex = 44;
+			this.btnXacNhan.Text = "Xác nhận";
+			this.btnXacNhan.UseVisualStyleBackColor = false;
+			this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
 			// 
 			// btnXoa
 			// 
@@ -132,6 +136,7 @@
 			this.btnXoa.TabIndex = 43;
 			this.btnXoa.Text = "Xóa sản phẩm";
 			this.btnXoa.UseVisualStyleBackColor = false;
+			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
 			// 
 			// btnSua
 			// 
@@ -144,6 +149,7 @@
 			this.btnSua.TabIndex = 42;
 			this.btnSua.Text = "Chỉnh sửa sản phẩm";
 			this.btnSua.UseVisualStyleBackColor = false;
+			this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
 			// 
 			// btnThem
 			// 
@@ -156,16 +162,17 @@
 			this.btnThem.TabIndex = 41;
 			this.btnThem.Text = "Thêm sản phẩm";
 			this.btnThem.UseVisualStyleBackColor = false;
+			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
 			// 
 			// groupBox_TTNhaCungCap
 			// 
 			this.groupBox_TTNhaCungCap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(214)))));
 			this.groupBox_TTNhaCungCap.Controls.Add(this.label7);
 			this.groupBox_TTNhaCungCap.Controls.Add(this.btnHuy);
-			this.groupBox_TTNhaCungCap.Controls.Add(this.btnCapNhat);
+			this.groupBox_TTNhaCungCap.Controls.Add(this.btnXacNhan);
 			this.groupBox_TTNhaCungCap.Controls.Add(this.txtTenNCC);
 			this.groupBox_TTNhaCungCap.Controls.Add(this.btnSua);
-			this.groupBox_TTNhaCungCap.Controls.Add(this.txtID_NCC);
+			this.groupBox_TTNhaCungCap.Controls.Add(this.txtMaNCC);
 			this.groupBox_TTNhaCungCap.Controls.Add(this.btnXoa);
 			this.groupBox_TTNhaCungCap.Controls.Add(this.label9);
 			this.groupBox_TTNhaCungCap.Controls.Add(this.btnThem);
@@ -195,13 +202,13 @@
 			this.txtTenNCC.Size = new System.Drawing.Size(155, 25);
 			this.txtTenNCC.TabIndex = 20;
 			// 
-			// txtID_NCC
+			// txtMaNCC
 			// 
-			this.txtID_NCC.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtID_NCC.Location = new System.Drawing.Point(162, 45);
-			this.txtID_NCC.Name = "txtID_NCC";
-			this.txtID_NCC.Size = new System.Drawing.Size(155, 25);
-			this.txtID_NCC.TabIndex = 13;
+			this.txtMaNCC.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtMaNCC.Location = new System.Drawing.Point(162, 45);
+			this.txtMaNCC.Name = "txtMaNCC";
+			this.txtMaNCC.Size = new System.Drawing.Size(155, 25);
+			this.txtMaNCC.TabIndex = 13;
 			// 
 			// label9
 			// 
@@ -223,23 +230,26 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Mã nhà cung cấp:";
 			// 
-			// dataGridView1
+			// dgvNCC
 			// 
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.dgvNCC.AllowUserToAddRows = false;
+			this.dgvNCC.AllowUserToDeleteRows = false;
+			this.dgvNCC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvNCC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProviderID,
             this.ProviderName});
-			this.dataGridView1.Location = new System.Drawing.Point(15, 106);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.Size = new System.Drawing.Size(383, 325);
-			this.dataGridView1.TabIndex = 47;
+			this.dgvNCC.Location = new System.Drawing.Point(15, 106);
+			this.dgvNCC.Name = "dgvNCC";
+			this.dgvNCC.ReadOnly = true;
+			this.dgvNCC.RowHeadersWidth = 62;
+			this.dgvNCC.Size = new System.Drawing.Size(383, 325);
+			this.dgvNCC.TabIndex = 47;
+			this.dgvNCC.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNCC_CellContentClick);
 			// 
 			// ProviderID
 			// 
 			this.ProviderID.HeaderText = "Mã nhà cung cấp";
+			this.ProviderID.MinimumWidth = 8;
 			this.ProviderID.Name = "ProviderID";
 			this.ProviderID.ReadOnly = true;
 			this.ProviderID.Width = 170;
@@ -247,6 +257,7 @@
 			// ProviderName
 			// 
 			this.ProviderName.HeaderText = "Tên nhà cung cấp";
+			this.ProviderName.MinimumWidth = 8;
 			this.ProviderName.Name = "ProviderName";
 			this.ProviderName.ReadOnly = true;
 			this.ProviderName.Width = 170;
@@ -255,7 +266,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.dataGridView1);
+			this.Controls.Add(this.dgvNCC);
 			this.Controls.Add(this.groupBox_TTNhaCungCap);
 			this.Controls.Add(this.groupBox_TimKiem);
 			this.Name = "QLNhaCungCap";
@@ -264,7 +275,7 @@
 			this.groupBox_TimKiem.PerformLayout();
 			this.groupBox_TTNhaCungCap.ResumeLayout(false);
 			this.groupBox_TTNhaCungCap.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvNCC)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -274,19 +285,19 @@
 		private System.Windows.Forms.GroupBox groupBox_TimKiem;
 		private System.Windows.Forms.Button btnRefresh;
 		private System.Windows.Forms.Button btnTim;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox txtTimKiem;
 		private System.Windows.Forms.Button btnHuy;
-		private System.Windows.Forms.Button btnCapNhat;
+		private System.Windows.Forms.Button btnXacNhan;
 		private System.Windows.Forms.Button btnXoa;
 		private System.Windows.Forms.Button btnSua;
 		private System.Windows.Forms.Button btnThem;
 		private System.Windows.Forms.GroupBox groupBox_TTNhaCungCap;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.TextBox txtTenNCC;
-		private System.Windows.Forms.TextBox txtID_NCC;
+		private System.Windows.Forms.TextBox txtMaNCC;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridView dgvNCC;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ProviderID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ProviderName;
 	}
