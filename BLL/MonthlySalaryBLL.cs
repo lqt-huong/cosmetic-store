@@ -11,6 +11,7 @@ namespace BLL
     public class MonthlySalaryBLL
     {
         MonthlySalaryDAL dal = new MonthlySalaryDAL();
+        LeaveRequestDAL dalLR = new LeaveRequestDAL();
 
         public MonthlySalaryBLL()
         {
@@ -29,6 +30,37 @@ namespace BLL
         public bool DaTinhLuong(int month, int year)
         {
             return dal.DaTinhLuong(month, year);
+        }
+
+        public int tongNgayNghi(int staffID, int month, int year)
+        {
+            int tongNgayNghi = 0;
+            List<LeaveRequest> listLR = dalLR.GetAllLeaveRequests();
+            foreach(LeaveRequest lr in listLR)
+            {
+                if (lr.StaffID == staffID && lr.LeavingDate.Month == month && lr.LeavingDate.Year == year)
+                {
+                    tongNgayNghi += lr.LeavingDays;
+                }
+            }
+            return tongNgayNghi;
+        }
+
+        public int GetSalary(int positionID)
+        {
+            return dal.GetSalary(positionID);
+        }
+
+        public int calcThucNhan(int positionID, int totalLeaving)
+        {
+            int salary = dal.GetSalary(positionID);
+            int leavingMinus = totalLeaving * (Convert.ToInt32(salary/26));
+            return salary - leavingMinus;
+        }
+
+        public int GetPositionID(int staffID, int month, int year)
+        {
+            return dal.GetPositionID(staffID, month, year);
         }
     }
 }

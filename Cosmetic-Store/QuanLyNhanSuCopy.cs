@@ -15,7 +15,9 @@ namespace Cosmetic_Store
     public partial class QuanLyNhanSuCopy : UserControl
     {
         List<MonthlySalary> listLuong = new List<MonthlySalary>();
+        List<Staff> listNV = new List<Staff>();
         MonthlySalaryBLL bllLuong = new MonthlySalaryBLL();
+        StaffBLL bllNV = new StaffBLL();
         public QuanLyNhanSuCopy()
         {
             InitializeComponent();
@@ -53,7 +55,7 @@ namespace Cosmetic_Store
             {
                 MessageBox.Show("Vui lòng nhập đủ tháng và năm cần tính lương!", "Thông báo");
             }
-            else if (int.TryParse(txtNamTinhLuong.Text, out parsing) && parsing <=0) {
+            else if (!int.TryParse(txtNamTinhLuong.Text, out parsing) || parsing <=0) {
                 MessageBox.Show("Năm đã nhập không hợp lệ!", "Thông báo");
             }
             else if (bllLuong.DaTinhLuong(Convert.ToInt32(cbxThang_Luong.SelectedItem.ToString()), Convert.ToInt32(txtNamTinhLuong.Text)))
@@ -63,6 +65,21 @@ namespace Cosmetic_Store
             else
             {
                 //tinh luong
+                listNV = bllNV.GetAllStaff();
+                int month = Convert.ToInt32(cbxThang_Luong.SelectedItem);
+                int year = Convert.ToInt32(txtNamTinhLuong.Text);
+                
+                foreach (Staff nv in listNV)
+                {
+                    int positionID = bllLuong.GetPositionID(nv.StaffID, month, year);
+                    int tongNgayNghi = bllLuong.tongNgayNghi(nv.StaffID, month, year);
+                    MonthlySalary luong = new MonthlySalary(nv.StaffID, month, year, positionID, tongNgayNghi, bllLuong.calcThucNhan(positionID, tongNgayNghi));
+                    if (!bllLuong.Insert(luong))
+                    {
+                        MessageBox.Show("Đã xảy ra lỗi trong quá trình tính lương!", "Thông báo");
+                        break;
+                    }
+                }
             }
         }
 

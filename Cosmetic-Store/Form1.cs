@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,10 @@ namespace Cosmetic_Store
         static Form1 form;
         static Account loggedinAccount;
         private Button previousButton;
+        PermissionBLL bllPQ = new PermissionBLL();
+        PermissionGrantingBLL bllCTPQ = new PermissionGrantingBLL();
+
+        List<PermissionGranting> accountPermission = new List<PermissionGranting>();
         public Form1(Account account)
         {
             InitializeComponent();
@@ -30,6 +35,36 @@ namespace Cosmetic_Store
                 }
             }
             loggedinAccount = account;
+
+            lblUserName.Text = loggedinAccount.Username;
+            lblQuyen.Text = bllPQ.GetTenQuyen(loggedinAccount.PermissionID);
+            accountPermission = bllCTPQ.QuyenTK(loggedinAccount.Username);
+            unlockFunction();
+        }
+
+        private void unlockFunction()
+        {
+            foreach (PermissionGranting permission in accountPermission)
+            {
+                switch (permission.FunctionID)
+                {
+                    case 1:
+                        btnQLTK.Visible = true;
+                        break;
+                    case 2:
+                        btnQLNS.Visible = true;
+                        break;
+                    case 3:
+                        btnQLK.Visible = true;
+                        break;
+                    case 4:
+                        btnQLKD.Visible = true;
+                        break;
+                    case 5:
+                        btnQLNS.Visible = true;
+                        break;
+                }
+            }
         }
 
         // Xử lý sự kiện Click cho tất cả các button
