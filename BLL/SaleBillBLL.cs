@@ -47,9 +47,9 @@ namespace BLL
             return "Đã có lỗi xảy ra!";
         }
 
-        public string Delete(int BillID, int StaffID)
+        public string Delete(int BillID)
         {
-            if (dao.Delete(BillID, StaffID))
+            if (dao.Delete(BillID))
             {
                 danhSach = dao.getAll();
                 return "Xóa thành công!";
@@ -71,11 +71,6 @@ namespace BLL
         {
             return dao.TrungMa(BillID);
         }
-
-        //public bool TrungVarietyID(int VarietyID, int StaffID)
-        //{
-        //    return dao.TrungVarietyID(VarietyID, StaffID);
-        //}
 
 /*        public List<SaleBill> SearchStateless(String key, int option, DateTime date)
         {

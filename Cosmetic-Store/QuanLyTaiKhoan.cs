@@ -438,6 +438,16 @@ namespace Cosmetic_Store
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //private void btnThem_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
         private void btnThemPQ_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(txtTenPhanQuyen.Text))

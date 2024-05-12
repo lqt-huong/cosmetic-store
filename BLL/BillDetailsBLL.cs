@@ -17,30 +17,26 @@ namespace BLL
         public BillDetailsBLL()
         {
             dao = new BillDetailsDAL();
-            danhSach = dao.getAll();
         }
 
-        public List<BillDetails> getAll()
+        public List<BillDetails> getAll(int maHD)
         {
-            return dao.getAll();
+            return dao.getAll(maHD);
         }
 
-        public void Insert(BillDetails bd, int nhomKH, int maHV)
+        public string Insert(BillDetails bd)
         {
-            bd.BillID = NextID();
-            bd.Quantity = 
-            bd.Price = GetFee(bd.VarietyID);
             if (dao.Insert(bd))
             {
-                danhSach = dao.getAll();
+                return "Thêm thành công!";
             }
+            return "Đã có lỗi xảy ra";
         }
 
-        public string Delete(int BillID)
+        public string Delete(int BillID, int VarietyID)
         {
-            if (dao.Delete(BillID))
+            if (dao.Delete(BillID, VarietyID))
             {
-                danhSach = dao.getAll();
                 return "Xóa thành công!";
             }
             return "Đã có lỗi xảy ra";
@@ -50,7 +46,6 @@ namespace BLL
         {
             if (dao.Update(bd))
             {
-                danhSach = dao.getAll();
                 return "Cập nhật thành công!";
             }
             return "Đã có lỗi xảy ra!";
@@ -64,6 +59,11 @@ namespace BLL
         public int NextID()
         {
             return dao.NextID();
+        }
+
+        public bool TrungMa(int BillID, int VarietyID)
+        {
+            return dao.TrungMa(BillID, VarietyID);
         }
     }
 }

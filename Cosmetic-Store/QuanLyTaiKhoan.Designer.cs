@@ -33,10 +33,6 @@ namespace Cosmetic_Store
             this.tabQLTaiKhoan = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
-            this.colMaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXacNhan = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -82,6 +78,10 @@ namespace Cosmetic_Store
             this.label7 = new System.Windows.Forms.Label();
             this.txtMaPhanQuyen = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.colMaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabQLTaiKhoan.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -109,10 +109,10 @@ namespace Cosmetic_Store
             this.tabQLTaiKhoan.Controls.Add(this.groupBox1);
             this.tabQLTaiKhoan.Controls.Add(this.dgvTaiKhoan);
             this.tabQLTaiKhoan.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabQLTaiKhoan.Location = new System.Drawing.Point(4, 31);
+            this.tabQLTaiKhoan.Location = new System.Drawing.Point(4, 44);
             this.tabQLTaiKhoan.Name = "tabQLTaiKhoan";
             this.tabQLTaiKhoan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQLTaiKhoan.Size = new System.Drawing.Size(832, 535);
+            this.tabQLTaiKhoan.Size = new System.Drawing.Size(832, 522);
             this.tabQLTaiKhoan.TabIndex = 0;
             this.tabQLTaiKhoan.Text = "Quản lý tài khoản";
             this.tabQLTaiKhoan.UseVisualStyleBackColor = true;
@@ -146,8 +146,6 @@ namespace Cosmetic_Store
             // 
             // dgvNhanVien
             // 
-            this.dgvNhanVien.AllowUserToAddRows = false;
-            this.dgvNhanVien.AllowUserToDeleteRows = false;
             this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNhanVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMaNV,
@@ -157,36 +155,10 @@ namespace Cosmetic_Store
             this.dgvNhanVien.Location = new System.Drawing.Point(23, 166);
             this.dgvNhanVien.MultiSelect = false;
             this.dgvNhanVien.Name = "dgvNhanVien";
-            this.dgvNhanVien.ReadOnly = true;
             this.dgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNhanVien.Size = new System.Drawing.Size(391, 150);
             this.dgvNhanVien.TabIndex = 14;
             this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
-            // 
-            // colMaNV
-            // 
-            this.colMaNV.HeaderText = "Mã nhân viên";
-            this.colMaNV.Name = "colMaNV";
-            this.colMaNV.ReadOnly = true;
-            // 
-            // colHoTen
-            // 
-            this.colHoTen.HeaderText = "Họ tên";
-            this.colHoTen.Name = "colHoTen";
-            this.colHoTen.ReadOnly = true;
-            this.colHoTen.Width = 250;
-            // 
-            // colNgaySinh
-            // 
-            this.colNgaySinh.HeaderText = "Ngày sinh";
-            this.colNgaySinh.Name = "colNgaySinh";
-            this.colNgaySinh.ReadOnly = true;
-            // 
-            // colDiaChi
-            // 
-            this.colDiaChi.HeaderText = "Địa chỉ";
-            this.colDiaChi.Name = "colDiaChi";
-            this.colDiaChi.ReadOnly = true;
             // 
             // btnXacNhan
             // 
@@ -251,7 +223,7 @@ namespace Cosmetic_Store
             this.cbxPhanQuyen.FormattingEnabled = true;
             this.cbxPhanQuyen.Location = new System.Drawing.Point(172, 332);
             this.cbxPhanQuyen.Name = "cbxPhanQuyen";
-            this.cbxPhanQuyen.Size = new System.Drawing.Size(242, 32);
+            this.cbxPhanQuyen.Size = new System.Drawing.Size(242, 40);
             this.cbxPhanQuyen.TabIndex = 8;
             // 
             // label4
@@ -260,7 +232,7 @@ namespace Cosmetic_Store
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
             this.label4.Location = new System.Drawing.Point(19, 335);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 24);
+            this.label4.Size = new System.Drawing.Size(166, 32);
             this.label4.TabIndex = 7;
             this.label4.Text = "Phân quyền";
             // 
@@ -274,6 +246,7 @@ namespace Cosmetic_Store
             this.button1.TabIndex = 6;
             this.button1.Text = "Chọn NV";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtMaNhanVien
             // 
@@ -281,7 +254,7 @@ namespace Cosmetic_Store
             this.txtMaNhanVien.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMaNhanVien.Location = new System.Drawing.Point(172, 122);
             this.txtMaNhanVien.Name = "txtMaNhanVien";
-            this.txtMaNhanVien.Size = new System.Drawing.Size(159, 29);
+            this.txtMaNhanVien.Size = new System.Drawing.Size(159, 39);
             this.txtMaNhanVien.TabIndex = 5;
             // 
             // label3
@@ -290,7 +263,7 @@ namespace Cosmetic_Store
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(19, 127);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 24);
+            this.label3.Size = new System.Drawing.Size(184, 32);
             this.label3.TabIndex = 4;
             this.label3.Text = "Mã nhân viên";
             // 
@@ -299,7 +272,7 @@ namespace Cosmetic_Store
             this.txtMatKhau.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMatKhau.Location = new System.Drawing.Point(172, 76);
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.Size = new System.Drawing.Size(242, 29);
+            this.txtMatKhau.Size = new System.Drawing.Size(242, 39);
             this.txtMatKhau.TabIndex = 3;
             // 
             // label2
@@ -308,7 +281,7 @@ namespace Cosmetic_Store
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(19, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 24);
+            this.label2.Size = new System.Drawing.Size(130, 32);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mật khẩu";
             // 
@@ -317,7 +290,7 @@ namespace Cosmetic_Store
             this.txtTenTaiKhoan.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtTenTaiKhoan.Location = new System.Drawing.Point(172, 32);
             this.txtTenTaiKhoan.Name = "txtTenTaiKhoan";
-            this.txtTenTaiKhoan.Size = new System.Drawing.Size(242, 29);
+            this.txtTenTaiKhoan.Size = new System.Drawing.Size(242, 39);
             this.txtTenTaiKhoan.TabIndex = 1;
             // 
             // label1
@@ -326,7 +299,7 @@ namespace Cosmetic_Store
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(19, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 24);
+            this.label1.Size = new System.Drawing.Size(186, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên tài khoản";
             // 
@@ -352,26 +325,34 @@ namespace Cosmetic_Store
             // colUsername
             // 
             this.colUsername.HeaderText = "Tên tài khoản";
+            this.colUsername.MinimumWidth = 8;
             this.colUsername.Name = "colUsername";
             this.colUsername.ReadOnly = true;
+            this.colUsername.Width = 150;
             // 
             // colPassword
             // 
             this.colPassword.HeaderText = "Mật khẩu";
+            this.colPassword.MinimumWidth = 8;
             this.colPassword.Name = "colPassword";
             this.colPassword.ReadOnly = true;
+            this.colPassword.Width = 150;
             // 
             // colStaffID
             // 
             this.colStaffID.HeaderText = "Mã nhân viên";
+            this.colStaffID.MinimumWidth = 8;
             this.colStaffID.Name = "colStaffID";
             this.colStaffID.ReadOnly = true;
+            this.colStaffID.Width = 150;
             // 
             // colPermissionID
             // 
             this.colPermissionID.HeaderText = "Mã phân quyền";
+            this.colPermissionID.MinimumWidth = 8;
             this.colPermissionID.Name = "colPermissionID";
             this.colPermissionID.ReadOnly = true;
+            this.colPermissionID.Width = 150;
             // 
             // tabQLPhanQuyen
             // 
@@ -379,10 +360,10 @@ namespace Cosmetic_Store
             this.tabQLPhanQuyen.Controls.Add(this.dgvPhanQuyen);
             this.tabQLPhanQuyen.Controls.Add(this.dgvChiTietPhanQuyen);
             this.tabQLPhanQuyen.Controls.Add(this.groupBox2);
-            this.tabQLPhanQuyen.Location = new System.Drawing.Point(4, 31);
+            this.tabQLPhanQuyen.Location = new System.Drawing.Point(4, 44);
             this.tabQLPhanQuyen.Name = "tabQLPhanQuyen";
             this.tabQLPhanQuyen.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQLPhanQuyen.Size = new System.Drawing.Size(832, 535);
+            this.tabQLPhanQuyen.Size = new System.Drawing.Size(832, 522);
             this.tabQLPhanQuyen.TabIndex = 1;
             this.tabQLPhanQuyen.Text = "Quản lý phân quyền";
             this.tabQLPhanQuyen.UseVisualStyleBackColor = true;
@@ -413,7 +394,7 @@ namespace Cosmetic_Store
             this.cbxMaChucNang.FormattingEnabled = true;
             this.cbxMaChucNang.Location = new System.Drawing.Point(164, 38);
             this.cbxMaChucNang.Name = "cbxMaChucNang";
-            this.cbxMaChucNang.Size = new System.Drawing.Size(190, 32);
+            this.cbxMaChucNang.Size = new System.Drawing.Size(190, 40);
             this.cbxMaChucNang.TabIndex = 14;
             this.cbxMaChucNang.SelectionChangeCommitted += new System.EventHandler(this.cbxMaChucNang_SelectionChangeCommitted);
             // 
@@ -468,7 +449,7 @@ namespace Cosmetic_Store
             this.txtTenChucNang.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtTenChucNang.Location = new System.Drawing.Point(164, 76);
             this.txtTenChucNang.Name = "txtTenChucNang";
-            this.txtTenChucNang.Size = new System.Drawing.Size(190, 29);
+            this.txtTenChucNang.Size = new System.Drawing.Size(190, 39);
             this.txtTenChucNang.TabIndex = 3;
             // 
             // label5
@@ -477,7 +458,7 @@ namespace Cosmetic_Store
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
             this.label5.Location = new System.Drawing.Point(19, 79);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(139, 24);
+            this.label5.Size = new System.Drawing.Size(201, 32);
             this.label5.TabIndex = 2;
             this.label5.Text = "Tên chức năng";
             // 
@@ -487,7 +468,7 @@ namespace Cosmetic_Store
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
             this.label6.Location = new System.Drawing.Point(19, 41);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(131, 24);
+            this.label6.Size = new System.Drawing.Size(191, 32);
             this.label6.TabIndex = 0;
             this.label6.Text = "Mã chức năng";
             // 
@@ -503,6 +484,7 @@ namespace Cosmetic_Store
             this.dgvPhanQuyen.MultiSelect = false;
             this.dgvPhanQuyen.Name = "dgvPhanQuyen";
             this.dgvPhanQuyen.ReadOnly = true;
+            this.dgvPhanQuyen.RowHeadersWidth = 62;
             this.dgvPhanQuyen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPhanQuyen.Size = new System.Drawing.Size(433, 319);
             this.dgvPhanQuyen.TabIndex = 5;
@@ -637,7 +619,7 @@ namespace Cosmetic_Store
             this.txtTenPhanQuyen.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtTenPhanQuyen.Location = new System.Drawing.Point(198, 76);
             this.txtTenPhanQuyen.Name = "txtTenPhanQuyen";
-            this.txtTenPhanQuyen.Size = new System.Drawing.Size(216, 29);
+            this.txtTenPhanQuyen.Size = new System.Drawing.Size(216, 39);
             this.txtTenPhanQuyen.TabIndex = 3;
             // 
             // label7
@@ -646,7 +628,7 @@ namespace Cosmetic_Store
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
             this.label7.Location = new System.Drawing.Point(19, 79);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(150, 24);
+            this.label7.Size = new System.Drawing.Size(219, 32);
             this.label7.TabIndex = 2;
             this.label7.Text = "Tên phân quyền";
             // 
@@ -656,7 +638,7 @@ namespace Cosmetic_Store
             this.txtMaPhanQuyen.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMaPhanQuyen.Location = new System.Drawing.Point(198, 32);
             this.txtMaPhanQuyen.Name = "txtMaPhanQuyen";
-            this.txtMaPhanQuyen.Size = new System.Drawing.Size(216, 29);
+            this.txtMaPhanQuyen.Size = new System.Drawing.Size(216, 39);
             this.txtMaPhanQuyen.TabIndex = 1;
             // 
             // label8
@@ -665,13 +647,34 @@ namespace Cosmetic_Store
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
             this.label8.Location = new System.Drawing.Point(19, 35);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(142, 24);
+            this.label8.Size = new System.Drawing.Size(209, 32);
             this.label8.TabIndex = 0;
             this.label8.Text = "Mã phân quyền";
             // 
+            // colMaNV
+            // 
+            this.colMaNV.HeaderText = "Mã nhân viên";
+            this.colMaNV.Name = "colMaNV";
+            // 
+            // colHoTen
+            // 
+            this.colHoTen.HeaderText = "Họ tên";
+            this.colHoTen.Name = "colHoTen";
+            this.colHoTen.Width = 250;
+            // 
+            // colNgaySinh
+            // 
+            this.colNgaySinh.HeaderText = "Ngày sinh";
+            this.colNgaySinh.Name = "colNgaySinh";
+            // 
+            // colDiaChi
+            // 
+            this.colDiaChi.HeaderText = "Địa chỉ";
+            this.colDiaChi.Name = "colDiaChi";
+            // 
             // QuanLyTaiKhoan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 35F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl);
             this.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
