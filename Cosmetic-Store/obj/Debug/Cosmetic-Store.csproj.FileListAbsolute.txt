@@ -98,3 +98,6 @@ D:\HTTTDN\cosmetic-store\Cosmetic-Store\bin\Debug\System.Runtime.CompilerService
 D:\HTTTDN\cosmetic-store\Cosmetic-Store\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\HTTTDN\cosmetic-store\Cosmetic-Store\bin\Debug\DAL.pdb
 D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic.1144FA15.Up2Date
+D:\HTTTDN\cosmetic-store\Cosmetic-Store\obj\Debug\Cosmetic_Store.TestConnectionDB.resources
+D:\HTTTDN\cosmetic-store\Cosmetic-Store\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\HTTTDN\cosmetic-store\Cosmetic-Store\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

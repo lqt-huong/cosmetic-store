@@ -42,6 +42,7 @@ namespace Cosmetic_Store
             unlockFunction();
         }
 
+        public static Account LoggedInAccount { get { return loggedinAccount; } set { loggedinAccount = value; } }
         private void unlockFunction()
         {
             foreach (PermissionGranting permission in accountPermission)

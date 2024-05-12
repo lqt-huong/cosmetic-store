@@ -64,11 +64,14 @@
     <Compile Include="QLNS_ThongKe.cs" />
     <Compile Include="StaffDAL.cs" />
     <Compile Include="testDAL.cs" />
+    <Compile Include="ThongKeDoanhThuDAL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SaleBillDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
     <Folder Include="obj\Release\" />
-    <Compile Include="SaleBillDAL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

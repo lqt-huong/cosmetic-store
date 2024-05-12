@@ -24,19 +24,18 @@ namespace BLL
             return dao.getAll(maHD);
         }
 
-        public void Insert(BillDetails bd, int nhomKH, int maHV)
+        public string Insert(BillDetails bd)
         {
-            bd.BillID = NextID();
-            bd.Quantity = 
-            bd.Price = GetFee(bd.VarietyID);
             if (dao.Insert(bd))
             {
+                return "Thêm thành công!";
             }
+            return "Đã có lỗi xảy ra";
         }
 
-        public string Delete(int BillID)
+        public string Delete(int BillID, int VarietyID)
         {
-            if (dao.Delete(BillID))
+            if (dao.Delete(BillID, VarietyID))
             {
                 return "Xóa thành công!";
             }
@@ -60,6 +59,11 @@ namespace BLL
         public int NextID()
         {
             return dao.NextID();
+        }
+
+        public bool TrungMa(int BillID, int VarietyID)
+        {
+            return dao.TrungMa(BillID, VarietyID);
         }
     }
 }

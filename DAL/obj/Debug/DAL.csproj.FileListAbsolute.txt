@@ -16,3 +16,12 @@ C:\Users\ADMIN\source\repos\cosmetic-store\DAL\bin\Debug\DAL.pdb
 C:\Users\ADMIN\source\repos\cosmetic-store\DAL\bin\Debug\ValueObject.dll
 C:\Users\ADMIN\source\repos\cosmetic-store\DAL\bin\Debug\ValueObject.pdb
 C:\Users\ADMIN\source\repos\cosmetic-store\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\HTTTDN\cosmetic-store\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\HTTTDN\cosmetic-store\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\HTTTDN\cosmetic-store\DAL\obj\Debug\DAL.dll
+D:\HTTTDN\cosmetic-store\DAL\obj\Debug\DAL.pdb
+D:\HTTTDN\cosmetic-store\DAL\bin\Debug\DAL.dll
+D:\HTTTDN\cosmetic-store\DAL\bin\Debug\DAL.pdb
+D:\HTTTDN\cosmetic-store\DAL\bin\Debug\ValueObject.dll
+D:\HTTTDN\cosmetic-store\DAL\bin\Debug\ValueObject.pdb
+D:\HTTTDN\cosmetic-store\DAL\obj\Debug\DAL.csproj.Up2Date

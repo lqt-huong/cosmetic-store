@@ -47,9 +47,9 @@ namespace BLL
             return "Đã có lỗi xảy ra!";
         }
 
-        public string Delete(int BillID, int StaffID)
+        public string Delete(int BillID)
         {
-            if (dao.Delete(BillID, StaffID))
+            if (dao.Delete(BillID))
             {
                 danhSach = dao.getAll();
                 return "Xóa thành công!";
