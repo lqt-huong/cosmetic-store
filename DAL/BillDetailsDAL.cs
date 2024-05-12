@@ -15,13 +15,13 @@ namespace DAL
 
         public BillDetailsDAL()
         {
-
+            dataServices.OpenDB();
         }
 
-        public List<BillDetails> getAll()
+        public List<BillDetails> getAll(int maHD)
         {
             List<BillDetails> list = new List<BillDetails>();
-            string sql = "SELECT * FROM BillDetails WHERE BillID!=0";
+            string sql = $"SELECT * FROM BillDetails WHERE BillID = {maHD}";
             if (!dataServices.OpenDB()) return null;
             dataTable = dataServices.RunQuery(sql);
             BillDetails bd;
@@ -49,14 +49,20 @@ namespace DAL
             row["Quantity"] = bd.Quantity;
             dataTable.Rows.Add(row);
             dataServices.Update(dataTable);
+
+            sql = $"UPDATE ProductVariety WHERE VarietyID = {bd.VarietyID} SET Quantity = Quantity - {bd.Quantity}";
+            dataServices.ExecuteNonQuery(sql);
+
+            sql = $"UPDATE SaleBill WHERE BillID = {row["BillID"]} SET TotalValue = TotalValue + {bd.Quantity*bd.Price}";
+            dataServices.ExecuteNonQuery(sql);
             return true;
         }
 
-        public bool Delete(int BillID)
+        public bool Delete(int BillID, int VarietyID)
         {
             try
             {
-                string sql = $"DELETE FROM BillDetails WHERE BillID = {BillID}";
+                string sql = $"DELETE FROM BillDetails WHERE BillID = {BillID} AND VarietyID = {VarietyID}";
                 dataServices.ExecuteNonQuery(sql);
             }
             catch (Exception e)
@@ -68,15 +74,15 @@ namespace DAL
 
         public bool Update(BillDetails bd)
         {
-            string sql = "SELECT * FROM BillDetails";
-            dataTable = dataServices.RunQuery(sql);
-            dataTable.PrimaryKey = new DataColumn[] { dataTable.Columns["BillID"] };
-            DataRow row = dataTable.Rows.Find(bd.BillID);
-            row["BillID"] = bd.BillID;
-            row["VarietyID"] = bd.VarietyID;
-            row["Price"] = bd.Price;
-            row["Quantity"] = bd.Quantity;
-            dataServices.Update(dataTable);
+            try
+            {
+                string sql = $"UPDATE BillDetails SET Quantity = {bd.Quantity} WHERE BillID = {bd.BillID} AND VarietyID = {bd.VarietyID}";
+                dataServices.ExecuteNonQuery(sql);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             return true;
         }
         public int GetFee(int VarietyID)
@@ -95,6 +101,14 @@ namespace DAL
             if (!int.TryParse(dataTable.Rows[0]["max"].ToString(), out num)) return 1;
             int curId = (int)dataTable.Rows[0]["max"];
             return curId + 1;
+        }
+
+        public bool TrungMa(int BillID, int VarietyID)
+        {
+            string sql = $"SELECT * FROM BillDetails WHERE BillID = {BillID} AND VarietyID = {VarietyID}";
+            dataTable = dataServices.RunQuery(sql);
+            if (dataTable.Rows.Count == 0) return false;
+            return true;
         }
     }
 }

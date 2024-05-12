@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ValueObject;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DAL
 {
@@ -14,12 +15,14 @@ namespace DAL
         DataTable dataTable;
 
         public SaleBillDAL()
-        { }
+        {
+            dataServices.OpenDB();
+        }
 
         public List<SaleBill> getAll()
         {
             List<SaleBill> list = new List<SaleBill>();
-            string sql = "SELECT * FROM SaleBill WHERE BillID !=0";
+            string sql = "SELECT * FROM SaleBill WHERE IsDeleted = 0";
             if (!dataServices.OpenDB()) return null;
             dataTable = dataServices.RunQuery(sql);
             SaleBill saleBill;
@@ -52,30 +55,11 @@ namespace DAL
             return true;
         }
 
-        public bool Delete(int BillID, int StaffID)
+        public bool Delete(int billID )
         {
             try
             {
-                string sql = $"DELETE FROM Staff WHERE StaffID = {StaffID}";
-                dataServices.ExecuteNonQuery(sql);
-                sql = $"SELECT BillDetails.VarietyID FROM BillDetails bd, SaleBill sb WHERE sb.StaffID = {StaffID} and sb.BillID = bd.BillID and sb.BillID = {BillID}";
-                dataTable = dataServices.RunQuery(sql);
-                List<int> VarietyID = new List<int>();
-                for (int i = 0; i < dataTable.Rows.Count; i++)
-                {
-                    VarietyID.Add((int)dataTable.Rows[i]["VarietyID"]);
-                }
-
-                foreach (int varietyid in VarietyID)
-                {
-                    sql = $"DELETE FROM ProductVariety WHERE VarietyID = {varietyid}";
-                    dataServices.ExecuteNonQuery(sql);
-                }
-
-                dataServices.ExecuteNonQuery(sql);
-                sql = $"DELETE FROM BillDetails WHERE BillID = {BillID}";
-                dataServices.ExecuteNonQuery(sql);
-                sql = $"DELETE FROM SaleBill WHERE BillID = {BillID}";
+                string sql = $"UPDATE SaleBill SET IsDeleted = 1 WHERE BillID = '{billID}'";
                 dataServices.ExecuteNonQuery(sql);
             }
             catch (Exception e)
@@ -119,7 +103,7 @@ namespace DAL
 
         public int NextID()
         {
-            string sql = "SELECT MAX(BillID) as 'max' FROM BillDetails";
+            string sql = "SELECT MAX(BillID) as 'max' FROM SaleBill";
             dataTable = dataServices.RunQuery(sql);
             int num = -1;
             if (!int.TryParse(dataTable.Rows[0]["max"].ToString(), out num)) return 1;
