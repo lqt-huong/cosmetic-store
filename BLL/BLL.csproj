@@ -55,14 +55,6 @@
     <Compile Include="testBLL.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{f1434d39-bbca-42cf-b546-a45eed8caf1f}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ValueObject\ValueObject.csproj">
-      <Project>{fbf0b77d-c99f-4ded-a568-cbfab0949b66}</Project>
-      <Name>ValueObject</Name>
-    </ProjectReference>
     <Compile Include="SaleBillBLL.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +65,14 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{f1434d39-bbca-42cf-b546-a45eed8caf1f}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{f1434d39-bbca-42cf-b546-a45eed8caf1f}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ValueObject\ValueObject.csproj">
+      <Project>{fbf0b77d-c99f-4ded-a568-cbfab0949b66}</Project>
+      <Name>ValueObject</Name>
     </ProjectReference>
     <ProjectReference Include="..\ValueObject\ValueObject.csproj">
       <Project>{fbf0b77d-c99f-4ded-a568-cbfab0949b66}</Project>

@@ -18,7 +18,7 @@ namespace DAL
         public List<LeaveRequest> GetAllLeaveRequests()
         {
             List<LeaveRequest> list = new List<LeaveRequest>();
-            string query = "SELECT * FROM LeavingRequest";
+            string query = "SELECT * FROM LeaveRequest";
             if (!dbConn.OpenDB())
                 return null;
             dataTable = dbConn.RunQuery(query);
@@ -39,7 +39,7 @@ namespace DAL
         }
         public bool InsertLeaveRequest(LeaveRequest request)
         {
-            string query = "SELECT * FROM LeavingRequest";
+            string query = "SELECT * FROM LeaveRequest";
             dataTable = dbConn.RunQuery(query);
             DataRow new_row = dataTable.NewRow();
             new_row["RequestID"] = request.RequestID;
@@ -56,7 +56,7 @@ namespace DAL
         }
         public bool UpdateLeaveRequest(int requestID, int status)
         {
-            string query = "SELECT * FROM LeavingRequest";
+            string query = "SELECT * FROM LeaveRequest";
             dataTable = dbConn.RunQuery(query);
             dataTable.PrimaryKey = new DataColumn[] { dataTable.Columns["RequestID"] };
             DataRow new_row = dataTable.Rows.Find(requestID);
@@ -67,7 +67,7 @@ namespace DAL
         public int AutoID()
         {
             int id = 0;
-            string query = "SELECT MAX(LeaveRequest) as max_requestID FROM LeavingRequest";
+            string query = "SELECT MAX(LeaveRequest) as max_requestID FROM LeaveRequest";
             dataTable = dbConn.RunQuery(query);
             int num = -1;
             if (!int.TryParse(dataTable.Rows[0]["max_requestID"].ToString(), out num))
@@ -77,7 +77,7 @@ namespace DAL
         }
         public bool CheckRequestIDExist(int requestID)
         {
-            string query = $"SELECT * FROM LeavingRequest WHERE RequestID={requestID}";
+            string query = $"SELECT * FROM LeaveRequest WHERE RequestID={requestID}";
             dataTable = dbConn.RunQuery(query);
             if (dataTable.Rows.Count > 0) 
                 return true;

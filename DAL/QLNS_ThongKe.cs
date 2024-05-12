@@ -17,13 +17,13 @@ namespace DAL
         }
         public DataTable ThongKeNhanVienTheoCV()
         {
-            String query = $"SELECT P.PositionName AS PositionName," +
-                $"COUNT(S.StaffID) AS NumberOfEmployees," +
-                $"Sum(P.Salary) AS TotalSalary" +
-                $"FROM  Position P" +
-                $"JOIN Contract C ON P.PositionID = C.PositionID" +
-                $"JOIN  Staff S On C.StaffID = S.StaffID" +
-                $"GROUP BY P.PosName";
+            String query = $"SELECT P.PositionName AS PositionName, " +
+                $"COUNT(S.StaffID) AS NumberOfEmployees, " +
+                $"SUM(M.ActualReceiving) AS TotalSalary " +
+                $"FROM Position P " +
+                $"JOIN MonthlySalary M ON P.PositionID = M.PositionID " +
+                $"JOIN Staff S ON M.StaffID = S.StaffID " +
+                $"GROUP BY P.PositionName; ";
             dbConn.OpenDB();
             dataTable = dbConn.RunQuery(query);
             return dataTable;

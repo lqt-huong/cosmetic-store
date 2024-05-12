@@ -80,6 +80,13 @@ namespace BLL
         {
             return tk.ThongKeNhanVienTheoCV();
         }
-
+        public DataTable ThongKeNVTheoCV()
+        {
+            return tk.ThongKeNhanVienTheoCV();
+        }
+        public Staff GetStaffbyID(int id)
+        {
+            return staffDAL.GetStaffbyID(id);
+        }
     }
 }

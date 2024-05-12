@@ -50,7 +50,11 @@ namespace Cosmetic_Store
             //    textBox.ForeColor = SystemColors.WindowText;
             //}
         }
-
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            StaffLoad();
+            txtTimKiem.Text = "";
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -364,6 +368,7 @@ namespace Cosmetic_Store
             }
             else
             {
+                dgvTTNS.Rows.Clear();
                 //maNV {0}
                 if (cbbTimKiem.SelectedIndex == 0)
                 {
@@ -376,7 +381,16 @@ namespace Cosmetic_Store
                     }
                     else
                     {
-                        dgvTTNS.DataSource = listTK;
+                        for (int i = 0; i < listTK.Count; i++)
+                        {
+                            DataGridViewRow newRow = new DataGridViewRow();
+                            newRow.CreateCells(dgvTTNS);
+                            newRow.Cells[0].Value = staffList[i].StaffID;
+                            newRow.Cells[1].Value = staffList[i].FullName;
+                            newRow.Cells[2].Value = staffList[i].DOB.ToShortDateString();
+                            newRow.Cells[3].Value = staffList[i].Address;
+                            dgvTTNS.Rows.Add(newRow);
+                        }
                     }
                 }
 
@@ -391,7 +405,16 @@ namespace Cosmetic_Store
                     }
                     else
                     {
-                        dgvTTNS.DataSource = listTK;
+                        for (int i = 0; i < listTK.Count; i++)
+                        {
+                            DataGridViewRow newRow = new DataGridViewRow();
+                            newRow.CreateCells(dgvTTNS);
+                            newRow.Cells[0].Value = staffList[i].StaffID;
+                            newRow.Cells[1].Value = staffList[i].FullName;
+                            newRow.Cells[2].Value = staffList[i].DOB.ToShortDateString();
+                            newRow.Cells[3].Value = staffList[i].Address;
+                            dgvTTNS.Rows.Add(newRow);
+                        }
                     }
                 }
             }
@@ -762,8 +785,20 @@ namespace Cosmetic_Store
         //============= THỐNG KÊ LƯƠNG THEO CHỨC VỤ============= //
        public void LoadThongKe()
         {
-            dgvThongKeNV_CV.DataSource = staffBLL.ThongKeNhanVienTheoCV();
+            dgvThongKeNV_CV.Rows.Clear();
+            DataTable dt = staffBLL.ThongKeNhanVienTheoCV();
+            foreach (DataRow row in dt.Rows)
+            {
+                // Lấy dữ liệu từ các cột trong DataTable
+                string positionName = row.Field<string>(0);
+                int numberOfEmployees = row.Field<int>(1);
+                int totalSalary = row.Field<int>(2);
+
+                // Thêm dữ liệu vào DataGridView
+                dgvThongKeNV_CV.Rows.Add(positionName, numberOfEmployees, totalSalary);
+            }
         }
+
         
     }
 }
