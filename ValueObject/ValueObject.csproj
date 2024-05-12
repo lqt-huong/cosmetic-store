@@ -75,6 +75,9 @@
     <None Include="obj\Debug\ValueObject.csproj.CoreCompileInputs.cache" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="test.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>

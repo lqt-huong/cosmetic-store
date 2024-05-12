@@ -63,7 +63,11 @@ namespace Cosmetic_Store
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvPhanQuyen = new System.Windows.Forms.DataGridView();
+            this.colMaPQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTenPQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvChiTietPhanQuyen = new System.Windows.Forms.DataGridView();
+            this.colMaPQ_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaCN_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCapNhatPQ = new System.Windows.Forms.Button();
             this.btnXacNhanPQ = new System.Windows.Forms.Button();
@@ -74,6 +78,10 @@ namespace Cosmetic_Store
             this.label7 = new System.Windows.Forms.Label();
             this.txtMaPhanQuyen = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.colMaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabQLTaiKhoan.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -139,14 +147,22 @@ namespace Cosmetic_Store
             // dgvNhanVien
             // 
             this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNhanVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colMaNV,
+            this.colHoTen,
+            this.colNgaySinh,
+            this.colDiaChi});
             this.dgvNhanVien.Location = new System.Drawing.Point(23, 166);
+            this.dgvNhanVien.MultiSelect = false;
             this.dgvNhanVien.Name = "dgvNhanVien";
-            this.dgvNhanVien.RowHeadersWidth = 62;
+            this.dgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNhanVien.Size = new System.Drawing.Size(391, 150);
             this.dgvNhanVien.TabIndex = 14;
+            this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
             // 
             // btnXacNhan
             // 
+            this.btnXacNhan.Enabled = false;
             this.btnXacNhan.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnXacNhan.Location = new System.Drawing.Point(198, 476);
             this.btnXacNhan.Name = "btnXacNhan";
@@ -154,9 +170,11 @@ namespace Cosmetic_Store
             this.btnXacNhan.TabIndex = 13;
             this.btnXacNhan.Text = "Xác nhận";
             this.btnXacNhan.UseVisualStyleBackColor = true;
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // btnHuy
             // 
+            this.btnHuy.Enabled = false;
             this.btnHuy.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnHuy.Location = new System.Drawing.Point(309, 476);
             this.btnHuy.Name = "btnHuy";
@@ -164,6 +182,7 @@ namespace Cosmetic_Store
             this.btnHuy.TabIndex = 12;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnXoa
             // 
@@ -174,6 +193,7 @@ namespace Cosmetic_Store
             this.btnXoa.TabIndex = 11;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnCapNhat
             // 
@@ -184,6 +204,7 @@ namespace Cosmetic_Store
             this.btnCapNhat.TabIndex = 10;
             this.btnCapNhat.Text = "Cập nhật";
             this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // btnThem
             // 
@@ -229,6 +250,7 @@ namespace Cosmetic_Store
             // 
             // txtMaNhanVien
             // 
+            this.txtMaNhanVien.Enabled = false;
             this.txtMaNhanVien.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMaNhanVien.Location = new System.Drawing.Point(172, 122);
             this.txtMaNhanVien.Name = "txtMaNhanVien";
@@ -292,11 +314,13 @@ namespace Cosmetic_Store
             this.colStaffID,
             this.colPermissionID});
             this.dgvTaiKhoan.Location = new System.Drawing.Point(6, 6);
+            this.dgvTaiKhoan.MultiSelect = false;
             this.dgvTaiKhoan.Name = "dgvTaiKhoan";
             this.dgvTaiKhoan.ReadOnly = true;
-            this.dgvTaiKhoan.RowHeadersWidth = 62;
+            this.dgvTaiKhoan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTaiKhoan.Size = new System.Drawing.Size(384, 523);
             this.dgvTaiKhoan.TabIndex = 1;
+            this.dgvTaiKhoan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaiKhoan_CellClick);
             // 
             // colUsername
             // 
@@ -453,7 +477,11 @@ namespace Cosmetic_Store
             this.dgvPhanQuyen.AllowUserToAddRows = false;
             this.dgvPhanQuyen.AllowUserToDeleteRows = false;
             this.dgvPhanQuyen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhanQuyen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colMaPQ,
+            this.colTenPQ});
             this.dgvPhanQuyen.Location = new System.Drawing.Point(3, 6);
+            this.dgvPhanQuyen.MultiSelect = false;
             this.dgvPhanQuyen.Name = "dgvPhanQuyen";
             this.dgvPhanQuyen.ReadOnly = true;
             this.dgvPhanQuyen.RowHeadersWidth = 62;
@@ -462,15 +490,50 @@ namespace Cosmetic_Store
             this.dgvPhanQuyen.TabIndex = 5;
             this.dgvPhanQuyen.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhanQuyen_CellClick);
             // 
+            // colMaPQ
+            // 
+            this.colMaPQ.HeaderText = "Mã phân quyền";
+            this.colMaPQ.Name = "colMaPQ";
+            this.colMaPQ.ReadOnly = true;
+            this.colMaPQ.Width = 160;
+            // 
+            // colTenPQ
+            // 
+            this.colTenPQ.HeaderText = "Tên phân quyền";
+            this.colTenPQ.Name = "colTenPQ";
+            this.colTenPQ.ReadOnly = true;
+            this.colTenPQ.Width = 300;
+            // 
             // dgvChiTietPhanQuyen
             // 
+            this.dgvChiTietPhanQuyen.AllowUserToAddRows = false;
+            this.dgvChiTietPhanQuyen.AllowUserToDeleteRows = false;
             this.dgvChiTietPhanQuyen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvChiTietPhanQuyen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colMaPQ_CT,
+            this.colMaCN_CT});
             this.dgvChiTietPhanQuyen.Location = new System.Drawing.Point(466, 6);
+            this.dgvChiTietPhanQuyen.MultiSelect = false;
             this.dgvChiTietPhanQuyen.Name = "dgvChiTietPhanQuyen";
-            this.dgvChiTietPhanQuyen.RowHeadersWidth = 62;
+            this.dgvChiTietPhanQuyen.ReadOnly = true;
+            this.dgvChiTietPhanQuyen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvChiTietPhanQuyen.Size = new System.Drawing.Size(360, 319);
             this.dgvChiTietPhanQuyen.TabIndex = 4;
             this.dgvChiTietPhanQuyen.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChiTietPhanQuyen_CellClick);
+            // 
+            // colMaPQ_CT
+            // 
+            this.colMaPQ_CT.HeaderText = "Mã phân quyền";
+            this.colMaPQ_CT.Name = "colMaPQ_CT";
+            this.colMaPQ_CT.ReadOnly = true;
+            this.colMaPQ_CT.Width = 170;
+            // 
+            // colMaCN_CT
+            // 
+            this.colMaCN_CT.HeaderText = "Mã chức năng";
+            this.colMaCN_CT.Name = "colMaCN_CT";
+            this.colMaCN_CT.ReadOnly = true;
+            this.colMaCN_CT.Width = 170;
             // 
             // groupBox2
             // 
@@ -588,6 +651,27 @@ namespace Cosmetic_Store
             this.label8.TabIndex = 0;
             this.label8.Text = "Mã phân quyền";
             // 
+            // colMaNV
+            // 
+            this.colMaNV.HeaderText = "Mã nhân viên";
+            this.colMaNV.Name = "colMaNV";
+            // 
+            // colHoTen
+            // 
+            this.colHoTen.HeaderText = "Họ tên";
+            this.colHoTen.Name = "colHoTen";
+            this.colHoTen.Width = 250;
+            // 
+            // colNgaySinh
+            // 
+            this.colNgaySinh.HeaderText = "Ngày sinh";
+            this.colNgaySinh.Name = "colNgaySinh";
+            // 
+            // colDiaChi
+            // 
+            this.colDiaChi.HeaderText = "Địa chỉ";
+            this.colDiaChi.Name = "colDiaChi";
+            // 
             // QuanLyTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 35F);
@@ -661,5 +745,13 @@ namespace Cosmetic_Store
         private System.Windows.Forms.DataGridViewTextBoxColumn colStaffID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPermissionID;
         private System.Windows.Forms.Button btnCapNhatPQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaPQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTenPQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaPQ_CT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaCN_CT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNgaySinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDiaChi;
     }
 }

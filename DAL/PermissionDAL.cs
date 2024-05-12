@@ -15,12 +15,13 @@ namespace DAL
 
         public PermissionDAL()
         {
+            dataServices.OpenDB();
         }
 
         public List<Permission> GetAll()
         {
             List<Permission> list = new List<Permission>();
-            string sql = "SELECT * FROM Permission WHERE IsDeleted = false";
+            string sql = "SELECT * FROM Permission WHERE IsDeleted = 0";
             if (!dataServices.OpenDB()) return null;
             dataTable = dataServices.RunQuery(sql);
             Permission quyen;
@@ -38,11 +39,12 @@ namespace DAL
 
         public bool Insert(Permission quyen)
         {
-            string sql = "SELECT * FROM quyen";
+            string sql = "SELECT * FROM Permission";
             dataTable = dataServices.RunQuery(sql);
             DataRow row = dataTable.NewRow();
             row["PermissionID"] = quyen.PermissionID;
             row["PermissionName"] = quyen.PermissionName;
+            row["IsDeleted"] = quyen.IsDeleted;
             dataTable.Rows.Add(row);
             dataServices.Update(dataTable);
             return true;
@@ -60,21 +62,30 @@ namespace DAL
             }
             dataServices.Update(dataTable);
 
-            sql = $"UPDATE Permission SET IsDeleted = true WHERE PermissionID = '{maQuyen}'";
+            sql = $"UPDATE Permission SET IsDeleted = 1 WHERE PermissionID = '{maQuyen}'";
             dataServices.ExecuteNonQuery(sql);
             return true;
         }
 
         public bool Update(Permission quyen)
         {
-            string sql = "SELECT * FROM quyen";
+            string sql = "SELECT * FROM Permission";
             dataTable = dataServices.RunQuery(sql);
             dataTable.PrimaryKey = new DataColumn[] { dataTable.Columns["PermissionID"] };
             DataRow row = dataTable.Rows.Find(quyen.PermissionID);
             row["PermissionID"] = quyen.PermissionID;
             row["PermissionName"] = quyen.PermissionName;
+            row["IsDeleted"] = quyen.IsDeleted;
             dataServices.Update(dataTable);
             return true;
+        }
+
+        public string GetTenQuyen(int maQuyen)
+        {
+            string sql = $"SELECT PermissionName FROM Permission WHERE PermissionID = {maQuyen}";
+            dataTable = dataServices.RunQuery(sql);
+            if (dataTable.Rows.Count == 0) return "";
+            return dataTable.Rows[0]["PermissionName"].ToString();
         }
 
         public bool TrungMa(int maQuyen)
