@@ -18,10 +18,10 @@ namespace DAL
 
         }
 
-        public List<BillDetails> getAll()
+        public List<BillDetails> getAll(int maHD)
         {
             List<BillDetails> list = new List<BillDetails>();
-            string sql = "SELECT * FROM BillDetails WHERE BillID!=0";
+            string sql = $"SELECT * FROM BillDetails WHERE BillID = {maHD}";
             if (!dataServices.OpenDB()) return null;
             dataTable = dataServices.RunQuery(sql);
             BillDetails bd;
@@ -49,6 +49,9 @@ namespace DAL
             row["Quantity"] = bd.Quantity;
             dataTable.Rows.Add(row);
             dataServices.Update(dataTable);
+
+            sql = $"UPDATE ProductVariety WHERE VarietyID = {row["VarietyID"]} SET Quantity = Quantity - {row["Quantity"]}";
+            dataServices.ExecuteNonQuery(sql);
             return true;
         }
 

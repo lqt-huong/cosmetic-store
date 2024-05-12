@@ -10,22 +10,39 @@ using System.Windows.Forms;
 using OfficeOpenXml;
 using System.IO;
 using System.Data.SqlClient;
+using Google.Protobuf.Collections;
+using BLL;
+using ValueObject;
 
 namespace Cosmetic_Store
 {
     public partial class QuanLyKinhDoanh : UserControl
     {
         string connectstring = @"Data Source=DESKTOP-D29FRPQ\MSSQL2022;Initial Catalog=cosmetic-store;Integrated Security=True";
+        //string connectstring = @"Data Source=JOSIE;Initial Catalog=cosmetic-store;Integrated Security=True"; //connection string của TH
         SqlConnection con;
         SqlCommand cmd;
         SqlDataAdapter adt;
         DataTable dt;
         private string inputDate;
 
+        SaleBillBLL bllHD = new SaleBillBLL();
+        List<SaleBill> listHD = new List<SaleBill>();
+
+        BillDetailsBLL bllCTHD = new BillDetailsBLL();
+        List<BillDetails> listCTHD = new List<BillDetails>();
+
+        int selectedBill = -1;
+
+        bool isDeleting = false, isUpdating = false;
+
+
         public QuanLyKinhDoanh()
         {
             InitializeComponent();
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+            listHD = bllHD.getAll();
+            LoadDataGridHD();
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
@@ -392,6 +409,99 @@ namespace Cosmetic_Store
             {
                 con.Close();
             }
+        }
+
+        private void LoadDataGridHD ()
+        {
+            dgvHoaDon.Rows.Clear();
+            for (int i = 0; i < listHD.Count; i++)
+            {
+                DataGridViewRow newRow = new DataGridViewRow();
+
+                newRow.CreateCells(dgvHoaDon);
+                newRow.Cells[0].Value = listHD[i].BillID;
+                newRow.Cells[1].Value = listHD[i].Date;
+                newRow.Cells[2].Value = listHD[i].StaffID;
+                newRow.Cells[3].Value = listHD[i].TotalValue;
+
+                dgvHoaDon.Rows.Add(newRow);
+            }
+        }
+
+        private void LoadCTHD(int maHD)
+        {
+            listCTHD = bllCTHD.getAll(maHD);
+            dgvCTHD.Rows.Clear();
+            for (int i = 0; i < listCTHD.Count; i++)
+            {
+                DataGridViewRow newRow = new DataGridViewRow();
+
+                newRow.CreateCells(dgvCTHD);
+                newRow.Cells[0].Value = listCTHD[i].BillID;
+                newRow.Cells[1].Value = listCTHD[i].VarietyID;
+                newRow.Cells[2].Value = listCTHD[i].Quantity;
+                newRow.Cells[3].Value = listCTHD[i].Price;
+
+                dgvCTHD.Rows.Add(newRow);
+            }
+        }
+
+        private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check if a valid row is clicked
+            {
+                //Get the DataGridViewRow corresponding to the clicked row
+                DataGridViewRow row = dgvHoaDon.Rows[e.RowIndex];
+                int maHD = Convert.ToInt32(row.Cells["colMaHD"].Value);
+
+                txtMaHD.Text = row.Cells["colMaHD"].Value.ToString();
+                txtNgayXuat.Value = (DateTime)row.Cells["colNgayXH"].Value;
+                txtMaNV.Text = row.Cells["colNVXH"].Value.ToString();
+
+                LoadCTHD(maHD);
+                selectedBill = maHD;
+            }
+        }
+
+        private void dgvCTHD_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check if a valid row is clicked
+            {
+                //Get the DataGridViewRow corresponding to the clicked row
+                DataGridViewRow row = dgvCTHD.Rows[e.RowIndex];
+
+                txtVarietyID_CT.Text = row.Cells["colVarietyID_CT"].Value.ToString();
+                txtQuantity_CT.Text = row.Cells["colQuantity_CT"].Value.ToString();
+                txtPrice_CT.Text = row.Cells["colPrice_CT"].Value.ToString();
+            }
+        }
+
+        private void btnHuyHD_Click(object sender, EventArgs e)
+        {
+            if (isDeleting)
+            {
+                isDeleting = false;
+
+                btnXoaHD.Enabled = true;
+                btnThemHD.Enabled = true;
+                btnXNHD.Enabled = false;
+                btnHuyHD.Enabled = false;
+            }
+        }
+
+        private void btnThemHD_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnXoaHD_Click(object sender, EventArgs e)
+        {
+            isDeleting = true;
+
+            btnXoaHD.Enabled = false;
+            btnThemHD.Enabled = false;
+            btnXNHD.Enabled = true;
+            btnHuyHD.Enabled = true;
         }
     }
 }

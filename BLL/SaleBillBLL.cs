@@ -72,11 +72,6 @@ namespace BLL
             return dao.TrungMa(BillID);
         }
 
-        public bool TrungVarietyID(int VarietyID, int StaffID)
-        {
-            return dao.TrungVarietyID(VarietyID, StaffID);
-        }
-
 /*        public List<SaleBill> SearchStateless(String key, int option, DateTime date)
         {
             List<SaleBill> searchList = new List<SaleBill>();

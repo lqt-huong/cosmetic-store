@@ -17,12 +17,11 @@ namespace BLL
         public BillDetailsBLL()
         {
             dao = new BillDetailsDAL();
-            danhSach = dao.getAll();
         }
 
-        public List<BillDetails> getAll()
+        public List<BillDetails> getAll(int maHD)
         {
-            return dao.getAll();
+            return dao.getAll(maHD);
         }
 
         public void Insert(BillDetails bd, int nhomKH, int maHV)
@@ -32,7 +31,6 @@ namespace BLL
             bd.Price = GetFee(bd.VarietyID);
             if (dao.Insert(bd))
             {
-                danhSach = dao.getAll();
             }
         }
 
@@ -40,7 +38,6 @@ namespace BLL
         {
             if (dao.Delete(BillID))
             {
-                danhSach = dao.getAll();
                 return "Xóa thành công!";
             }
             return "Đã có lỗi xảy ra";
@@ -50,7 +47,6 @@ namespace BLL
         {
             if (dao.Update(bd))
             {
-                danhSach = dao.getAll();
                 return "Cập nhật thành công!";
             }
             return "Đã có lỗi xảy ra!";
