@@ -15,7 +15,8 @@ namespace Cosmetic_Store
 {
     public partial class QuanLyKinhDoanh : UserControl
     {
-        string connectstring = @"Data Source=DESKTOP-D29FRPQ\MSSQL2022;Initial Catalog=cosmetic-store;Integrated Security=True";
+        //string connectstring = @"Data Source=DESKTOP-D29FRPQ\MSSQL2022;Initial Catalog=cosmetic-store;Integrated Security=True";
+        string connectstring = @"Data Source=josie\sqlexpress;Initial Catalog=cosmetic-store;Integrated Security=True"; //connection string của TH
         SqlConnection con;
         SqlCommand cmd;
         SqlDataAdapter adt;
@@ -49,7 +50,7 @@ namespace Cosmetic_Store
                                                 "JOIN ProductVariety pv ON pv.ProductID = p.ProductID " +
                                                 "JOIN BillDetails bd ON bd.VarietyID = pv.VarietyID " +
                                                 "JOIN SaleBill sb ON sb.BillID = bd.BillID " +
-                                                "WHERE sb.isDeleted = 0 " +
+                                                "WHERE sb.IsDeleted = 0 " +
                                                 "GROUP BY p.ProductID, p.ProductName, c.CategoryName, pv.Volume, pv.Price, bd.Quantity, sb.Date " +
                                                 "ORDER BY sb.Date", con);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -143,7 +144,7 @@ namespace Cosmetic_Store
                                                 "JOIN ProductVariety pv ON pv.ProductID = p.ProductID " +
                                                 "JOIN BillDetails bd ON bd.VarietyID = pv.VarietyID " +
                                                 "JOIN SaleBill sb ON sb.BillID = bd.BillID " +
-                                                "WHERE sb.isDeleted = 0 " +
+                                                "WHERE sb.IsDeleted = 0 " +
                                                 "GROUP BY p.ProductID, p.ProductName, c.CategoryName, pv.Volume, pv.Price, bd.Quantity, sb.Date " +
                                                 "ORDER BY sb.Date", con);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -167,7 +168,7 @@ namespace Cosmetic_Store
 
                 SqlCommand cmdDT = new SqlCommand("SELECT sb.Date AS 'Ngày', SUM(sb.TotalValue) AS 'Tổng tiền' " +
                                                 "FROM SaleBill sb " +
-                                                "WHERE sb.isDeleted = 0 " +
+                                                "WHERE sb.IsDeleted = 0 " +
                                                 "GROUP BY sb.Date " +
                                                 "ORDER BY sb.Date", con);
                 SqlDataAdapter adapterDT = new SqlDataAdapter(cmdDT);
@@ -216,7 +217,7 @@ namespace Cosmetic_Store
                                                     "JOIN BillDetails bd ON bd.VarietyID = pv.VarietyID " +
                                                     "JOIN SaleBill sb ON sb.BillID = bd.BillID " +
                                                     //"WHERE sb.Date LIKE @inputDate", con);
-                                                    "WHERE CONVERT(date, sb.Date) = @inputDate AND sb.isDeleted = 0 " +
+                                                    "WHERE CONVERT(date, sb.Date) = @inputDate AND sb.IsDeleted = 0 " +
                                                     "GROUP BY p.ProductID, p.ProductName, c.CategoryName, pv.Volume, pv.Price, bd.Quantity, sb.Date " +
                                                     "ORDER BY sb.Date", con);
                 cmd.Parameters.AddWithValue("@inputDate", date);
@@ -294,7 +295,7 @@ namespace Cosmetic_Store
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT sb.Date AS 'Ngày', SUM(sb.TotalValue) AS 'Tổng tiền' " +
                                                 "FROM SaleBill sb " +
-                                                "WHERE sb.isDeleted = 0 " +
+                                                "WHERE sb.IsDeleted = 0 " +
                                                 "GROUP BY sb.Date " +
                                                 "ORDER BY sb.Date", con);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -338,7 +339,7 @@ namespace Cosmetic_Store
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT @inputDate AS 'Ngày', SUM(sb.TotalValue) AS 'Tổng tiền', " + quarter + " AS Quý, " + year + " AS Năm " +
                                                 "FROM SaleBill sb " +
-                                                "WHERE CONVERT(date, sb.Date) = @inputDate AND sb.isDeleted = 0 " +
+                                                "WHERE CONVERT(date, sb.Date) = @inputDate AND sb.IsDeleted = 0 " +
                                                 "GROUP BY sb.Date " +
                                                 "ORDER BY sb.Date", con);
                 cmd.Parameters.AddWithValue("@inputDate", date);

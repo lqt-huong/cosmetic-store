@@ -9,3 +9,4 @@ C:\Users\ADMIN\source\repos\cosmetic-store\ValueObject\obj\Debug\ValueObject.csp
 C:\Users\ADMIN\source\repos\cosmetic-store\ValueObject\obj\Debug\ValueObject.dll
 C:\Users\ADMIN\source\repos\cosmetic-store\ValueObject\obj\Debug\ValueObject.pdb
 C:\Users\ADMIN\source\repos\cosmetic-store\ValueObject\obj\Debug\ValueObject.csproj.AssemblyReference.cache
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\ValueObject\obj\Debug\ValueObject.csproj.AssemblyReference.cache

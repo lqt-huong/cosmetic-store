@@ -97,5 +97,17 @@ namespace DAL
             }catch (Exception ex) { return false; }
             return true;
         }
+        public Staff GetStaffbyID(int id)
+        {
+            string sql = $"SELECT * FROM Staff WHERE StaffID = {id}";
+            dataTable = dbConn.RunQuery(sql);
+            if (dataTable.Rows.Count == 0) return null;
+            Staff staff = new Staff();
+            staff.StaffID = (int)dataTable.Rows[0]["StaffID"];
+            staff.FullName = dataTable.Rows[0]["FullName"].ToString();
+            staff.DOB = (DateTime)dataTable.Rows[0]["DoB"];
+            staff.Address = dataTable.Rows[0]["Address"].ToString();
+            return staff;
+        }
     }
 }

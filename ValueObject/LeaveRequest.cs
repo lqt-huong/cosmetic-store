@@ -31,7 +31,7 @@ namespace ValueObject
             staffID = staffid;
         }
         public int RequestID { get { return this.requestID; } set { this.requestID = value; } }
-        public int AppproveStatus { get { return this.approveStatus; } set { this.approveStatus = value; } }
+        public int ApproveStatus { get { return this.approveStatus; } set { this.approveStatus = value; } }
 
         public string RequestContent { get { return this.requestContent; } set { this.requestContent = value; } }
         public DateTime LeavingDate { get { return this.leavingDate; } set { this.leavingDate = value; } }

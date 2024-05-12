@@ -39,14 +39,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="ValueObject">
-      <HintPath>..\ValueObject\bin\Debug\ValueObject.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountDAL.cs" />
     <Compile Include="BillDetailsDAL.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="ContractDAL.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="DataServices.cs" />
     <Compile Include="FunctionDAL.cs" />
@@ -66,9 +64,17 @@
     <Compile Include="testDAL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SaleBillDAL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ValueObject\ValueObject.csproj">
+      <Project>{fbf0b77d-c99f-4ded-a568-cbfab0949b66}</Project>
+      <Name>ValueObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="bin\Debug\" />
     <Folder Include="obj\Release\" />
-    <Compile Include="SaleBillDAL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
