@@ -80,6 +80,14 @@ namespace DAL
             return true;
         }
 
+        public string GetTenQuyen(int maQuyen)
+        {
+            string sql = $"SELECT PermissionName FROM Permission WHERE PermissionID = {maQuyen}";
+            dataTable = dataServices.RunQuery(sql);
+            if (dataTable.Rows.Count == 0) return "";
+            return dataTable.Rows[0]["PermissionName"].ToString();
+        }
+
         public bool TrungMa(int maQuyen)
         {
             string sql = $"SELECT * FROM Permission WHERE PermissionID = {maQuyen}";

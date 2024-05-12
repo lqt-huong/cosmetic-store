@@ -63,5 +63,10 @@ namespace BLL
         {
             return dal.NextID();
         }
+
+        public string GetTenQuyen(int maQuyen)
+        {
+            return dal.GetTenQuyen(maQuyen);
+        }
     }
 }
