@@ -4,9 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ValueObject
+namespace DAL
 {
-    class Bill
+    public class testDAL
     {
+        public testDAL()
+        {
+
+        }
+
+
     }
 }

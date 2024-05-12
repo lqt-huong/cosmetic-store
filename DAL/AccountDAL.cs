@@ -15,13 +15,13 @@ namespace DAL
 
         public AccountDAL()
         {
-
+            dataServices.OpenDB();
         }
 
-        public List<Account> getAll()
+        public List<Account> GetAll()
         {
             List<Account> danhSach = new List<Account>();
-            string sql = "SELECT * FROM Account WHERE IsDeleted = false";
+            string sql = "SELECT * FROM Account WHERE IsDeleted = 0";
             if (!dataServices.OpenDB()) return null;
             dataTable = dataServices.RunQuery(sql);
             Account taiKhoan;
@@ -61,6 +61,7 @@ namespace DAL
             row["Password"] = taiKhoan.Password;
             row["StaffID"] = taiKhoan.StaffID;
             row["PermissionID"] = taiKhoan.PermissionID;
+            row["IsDeleted"] = taiKhoan.IsDeleted;
             dataTable.Rows.Add(row);
             dataServices.Update(dataTable);
             return true;
@@ -70,7 +71,7 @@ namespace DAL
         {
             try
             {
-                string sql = $"UPDATE Account SET IsDeleted = true WHERE Username = '{tenTK}'";
+                string sql = $"UPDATE Account SET IsDeleted = 1 WHERE Username = '{tenTK}'";
                 dataServices.ExecuteNonQuery(sql);
             }
             catch (Exception e)
@@ -82,7 +83,7 @@ namespace DAL
 
         public bool Update(Account taiKhoan)
         {
-            string sql = "SELECT * FROM tai_khoan";
+            string sql = "SELECT * FROM Account";
             dataTable = dataServices.RunQuery(sql);
             dataTable.PrimaryKey = new DataColumn[] { dataTable.Columns["Username"] };
             DataRow row = dataTable.Rows.Find(taiKhoan.Username);
@@ -90,6 +91,7 @@ namespace DAL
             row["Password"] = taiKhoan.Password;
             row["StaffID"] = taiKhoan.StaffID;
             row["PermissionID"] = taiKhoan.PermissionID;
+            row["IsDeleted"] = taiKhoan.IsDeleted;
             dataServices.Update(dataTable);
             return true;
         }
@@ -97,6 +99,14 @@ namespace DAL
         public bool TrungTenTK(string tenTK)
         {
             string sql = $"SELECT * FROM Account WHERE Username = '{tenTK}'";
+            dataTable = dataServices.RunQuery(sql);
+            if (dataTable.Rows.Count == 0) return false;
+            return true;
+        }
+
+        public bool KTMatKhau(string tenTK, string matKhau)
+        {
+            string sql = $"SELECT * FROM Account WHERE Username = '{tenTK}' AND Password = '{matKhau}'";
             dataTable = dataServices.RunQuery(sql);
             if (dataTable.Rows.Count == 0) return false;
             return true;
