@@ -27,7 +27,7 @@ namespace DAL
             {
                 leaveRequest = new LeaveRequest();
                 leaveRequest.RequestID = (int)row["RequestID"];
-                leaveRequest.AppproveStatus = (int)row["ApproveStatus"];
+                leaveRequest.ApproveStatus = (int)row["ApproveStatus"];
                 leaveRequest.RequestContent = row["RequestContent"].ToString();
                 leaveRequest.LeavingDate = Convert.ToDateTime(row["LeavingDate"]);
                 leaveRequest.LeavingDays = (int)row["LeavingDays"];
@@ -43,7 +43,7 @@ namespace DAL
             dataTable = dbConn.RunQuery(query);
             DataRow new_row = dataTable.NewRow();
             new_row["RequestID"] = request.RequestID;
-            new_row["AppproveStatus"] = request.AppproveStatus;
+            new_row["ApproveStatus"] = request.ApproveStatus;
             new_row["RequestContent"] = request.RequestContent;
             new_row["LeavingDate"] = request.LeavingDate;
             new_row["LeavingDays"] = request.LeavingDays;
@@ -67,7 +67,7 @@ namespace DAL
         public int AutoID()
         {
             int id = 0;
-            string query = "SELECT MAX(LeaveRequest) as max_requestID FROM LeaveRequest";
+            string query = "SELECT MAX(RequestID) as max_requestID FROM LeaveRequest";
             dataTable = dbConn.RunQuery(query);
             int num = -1;
             if (!int.TryParse(dataTable.Rows[0]["max_requestID"].ToString(), out num))

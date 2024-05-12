@@ -32,7 +32,7 @@ namespace DAL
                 position.PositionID = (int)row["PositionID"];
                 position.PositionName = row["PositionName"].ToString();
                 position.Salary =(int)row["Salary"];
-                position.IsDeleted = position.IsDeleted = Convert.ToByte((bool)row["IsDeleted"]);
+                position.IsDeleted = Convert.ToByte((bool)row["IsDeleted"]);
                 list.Add(position);
             }
             return list;

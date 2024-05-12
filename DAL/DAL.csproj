@@ -44,6 +44,7 @@
     <Compile Include="AccountDAL.cs" />
     <Compile Include="BillDetailsDAL.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="ContractDAL.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="DataServices.cs" />
     <Compile Include="FunctionDAL.cs" />

@@ -20,15 +20,20 @@ namespace Cosmetic_Store
         List<Position> posList = new List<Position>();
         LeaveRequestBLL requestBLL = new LeaveRequestBLL();
         List<LeaveRequest> requestList = new List<LeaveRequest>();
+        ContractBLL contractBLL = new ContractBLL();
+        List<Contract> contractList = new List<Contract>();
+        static Account loggedInAcc;
         private const string placeholderText = "Nhận tên nhân viên cần tìm...";
         public QuanLyNhanSu()
         {
             InitializeComponent();
+            loggedInAcc = Form1.LoggedInAccount;
             StaffLoad();
             PositionLoad();
             RequestLoad();
             LoadTTCN();
             LoadThongKe();
+            LoadContract();
         }
         //============= THÔNG TIN NHÂN SỰ ============= //
         public void LoadPlaceholderText()
@@ -143,6 +148,11 @@ namespace Cosmetic_Store
                     DateTimePicker date = (DateTimePicker)control;
                     date.Enabled = true;
                 }
+                if (control is ComboBox)
+                {
+                    ComboBox cbb = (ComboBox)control;
+                    cbb.Enabled = true;
+                }
             }
         }
         public void DisableAllInputBoxInGroupBox(GroupBox groupBox)
@@ -183,7 +193,10 @@ namespace Cosmetic_Store
                 else if (control is ComboBox)
                 {
                     ComboBox cbb = (ComboBox)control;
-                    cbb.SelectedIndex = 0;
+                    if (cbb.Items.Count > 0) // Kiểm tra có ít nhất một mục trong ComboBox hay không
+                    {
+                        cbb.SelectedIndex = 0;
+                    }
                 }
             }
         }
@@ -593,7 +606,7 @@ namespace Cosmetic_Store
                 newRow.Cells[3].Value = requestList[i].LeavingDays;
                 newRow.Cells[4].Value = requestList[i].LeavingType;
                 newRow.Cells[5].Value = requestList[i].RequestContent;
-                newRow.Cells[6].Value = requestList[i].AppproveStatus;
+                newRow.Cells[6].Value = requestList[i].ApproveStatus;
                 dgvLeaveRequest.Rows.Add(newRow);
             }
         }
@@ -693,7 +706,20 @@ namespace Cosmetic_Store
             txtSTaffID_TTNV.Enabled = false;
             DisableButtonsInGroupBox(gbXinNP, btn_XacNhan_Form, btn_Huy_Form);
             DisableButtonsInGroupBox(gbThongTinNhanVien, btn_XacNhan_TTCN, btn_Huy_TTCN);
-            //Thêm phần load ra thông tin nhân viên hiện tại
+            DisableAllInputBoxInGroupBox(gbThongTinNhanVien);
+            DisableAllInputBoxInGroupBox(gbXinNP);
+            int id = loggedInAcc.StaffID;
+            Staff currStaff = staffBLL.GetStaffbyID(id);
+            //load groupbox TTNV
+            txtSTaffID_TTNV.Text = currStaff.StaffID.ToString();
+            txtFullName_TTNV.Text = currStaff.FullName.ToString();
+            dateDOB_TTNV.Value = currStaff.DOB;
+            txtAdress_TTNV.Text = currStaff.Address;
+            //Load Form xin nghỉ phép
+            cbbLeavingType_Form.SelectedIndex = 0;
+            txtStaffID_Form.Text = currStaff.StaffID.ToString();
+
+            
         }
 
         static bool click_GuiDon = false;
@@ -702,6 +728,10 @@ namespace Cosmetic_Store
             click_GuiDon = true;
             focusButton(btnGuiDon);
             EnableButtonsInGroupBox(gbXinNP, btn_XacNhan_Form, btn_Huy_Form);
+            cbbLeavingType_Form.Enabled = true;
+            dateLeavingDate_Form.Enabled = true;
+            txtleavingDays_Form.Enabled = true;
+            txtContent_Form.Enabled = true;
         }
 
         private void btn_Huy_Form_Click(object sender, EventArgs e)
@@ -729,12 +759,13 @@ namespace Cosmetic_Store
                 else
                 {//Convert.ToInt32(txtPosID.Text), txtPosName.Text.ToString(), Convert.ToInt32(txtSalary.Text), 0
                     int requestID = requestBLL.AutoID();
-                    LeaveRequest request = new LeaveRequest(requestID, 0, txtContent_Form.Text.ToString(), dateLeavingDate_Form.Value, Convert.ToInt32(txtContent_Form.Text.ToString()), cbbLeavingType_Form.SelectedIndex , Convert.ToInt32(txtStaffID_Form.Text.ToString()));
+                    LeaveRequest request = new LeaveRequest(requestID, 0, txtContent_Form.Text.ToString(), dateLeavingDate_Form.Value, Convert.ToInt32(txtleavingDays_Form.Text.ToString()), cbbLeavingType_Form.SelectedIndex , Convert.ToInt32(txtStaffID_Form.Text.ToString()));
                     if (requestBLL.InsertLeaveRequest(request))
                     {
                         MessageBox.Show("Gửi đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadTTCN();
                         resetButtonColor(btnGuiDon);
+                        RequestLoad();
                     }
                 }
             }
@@ -745,6 +776,10 @@ namespace Cosmetic_Store
             click_Sua_TTNV = true;
             focusButton(btn_Sua_TTCN);
             EnableButtonsInGroupBox(gbThongTinNhanVien, btn_XacNhan_TTCN, btn_Huy_TTCN);
+            txtFullName_TTNV.Enabled = true;
+            dateDOB_TTNV.Enabled = true;
+            txtAddress.Enabled = true;
+            txtAdress_TTNV.Enabled = true;
         }
 
         private void btn_XacNhan_TTCN_Click(object sender, EventArgs e)
@@ -771,6 +806,7 @@ namespace Cosmetic_Store
                         MessageBox.Show("Chỉnh sửa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         resetButtonColor(btn_Sua_TTCN);
                         LoadTTCN();
+                        StaffLoad();
                     }
                 }
             }
@@ -798,7 +834,164 @@ namespace Cosmetic_Store
                 dgvThongKeNV_CV.Rows.Add(positionName, numberOfEmployees, totalSalary);
             }
         }
+        //============= HỢP ĐỒNG LAO ĐỘNG============= //
+        public void LoadContract()
+        {
+            DisableAllInputBoxInGroupBox(gbHDLD);
+            DisableButtonsInGroupBox(gbHDLD, btn_XacNhan_HDLD, btn_Huy_HDLD);
+            txtSoHopDong.Enabled = false;
+            dateNgayBD.Enabled = false;
+            dateNgayKT.Enabled = false;
+            txtMaNV_HopDong.Enabled = false;
+            cbbMaCV.Enabled = false;
+            LoadCbbMaCV();
+            txtSoHopDong.Enabled = false;
+            dgvContract.Rows.Clear();
+            click_Them_HDLD = false;
+            click_Xoa_HDLD = false;
+            dgvContract.CurrentCell = null;
+            txtSoHopDong.Text = "";
+            dateNgayBD.Value = DateTime.Today;
+            dateNgayKT.Value = DateTime.Today;
+            txtMaNV_HopDong.Text = "";
+            cbbMaCV.SelectedIndex = 0;
+            contractList = contractBLL.GetAllContract();
+            for (int i = 0; i < contractList.Count; i++)
+            {
+                DataGridViewRow newRow = new DataGridViewRow();
+                newRow.CreateCells(dgvContract);
+                newRow.Cells[0].Value = contractList[i].ContractNo;
+                newRow.Cells[1].Value = contractList[i].StartingDate;
+                newRow.Cells[2].Value = contractList[i].EndingDate;
+                newRow.Cells[3].Value = contractList[i].StaffID;
+                newRow.Cells[4].Value = contractList[i].PositionID;
+                dgvContract.Rows.Add(newRow);
+            }
+        }
+        private void LoadCbbMaCV()
+        {
+            posList = posBLL.GetAllPosition();
+            cbbMaCV.Items.Clear();
+            posList.ForEach(pos =>
+            {
+                cbbMaCV.Items.Add(pos.PositionID.ToString().Trim());
+            });
+        }
+        private void dgvContract_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check if a valid row is clicked
+            {
+                //Get the DataGridViewRow corresponding to the clicked row
+                DataGridViewRow row = dgvContract.Rows[e.RowIndex];
+                txtSoHopDong.Text = row.Cells["ContractNo"].Value.ToString();
+                dateNgayBD.Value = (DateTime)row.Cells["StartingDate"].Value;
+                dateNgayKT.Value = (DateTime)row.Cells["EndingDate"].Value;
+                //object startingDateValue = row.Cells["StartingDate"].Value;
+                //object endingDateValue = row.Cells["EndingDate"].Value;
+                //// Kiểm tra xem giá trị có tồn tại và là kiểu dữ liệu DateTime không
+                //if (startingDateValue != null && startingDateValue != DBNull.Value && startingDateValue is DateTime)
+                //{
+                //    // Ép kiểu và gán giá trị cho DateTimePicker
+                //    dateNgayBD.Value = (DateTime)startingDateValue;
+                //}
+                //if (endingDateValue != null && endingDateValue != DBNull.Value && endingDateValue is DateTime)
+                //{
+                //    // Ép kiểu và gán giá trị cho DateTimePicker
+                //    dateNgayKT.Value = (DateTime)endingDateValue;
+                //}
+                txtMaNV_HopDong.Text = row.Cells["StaffID_Contract"].Value.ToString();
+                cbbMaCV.Text = row.Cells["PositionID_Contract"].Value.ToString();
+            }
+        }
+        static bool click_Them_HDLD = false;
+        private void btn_Them_HDLD_Click(object sender, EventArgs e)
+        {
+            click_Them_HDLD = true;
+            click_Xoa_HDLD = false;
+            focusButton(btn_Them_HDLD);
+            int id = contractBLL.AutoID();
+            txtSoHopDong.Text = id.ToString();
+            EnableButtonsInGroupBox(gbHDLD, btn_XacNhan_HDLD, btn_Huy_HDLD);
+            EnableAllInputInGroupBox(gbHDLD);
+            txtSoHopDong.Enabled = false;
 
-        
+        }
+        static bool click_Xoa_HDLD = false;
+        private void btn_Xoa_HDLD_Click(object sender, EventArgs e)
+        {
+            click_Xoa_HDLD = true;
+            click_Them_HDLD = false;
+            focusButton(btn_Xoa_HDLD);
+            EnableButtonsInGroupBox(gbHDLD, btn_XacNhan_HDLD, btn_Huy_HDLD);
+            EnableAllInputInGroupBox(gbHDLD);
+            DisableAllInputBoxInGroupBox(gbHDLD);
+            txtSoHopDong.Enabled = true;
+        }
+
+        private void btn_Huy_HDLD_Click(object sender, EventArgs e)
+        {
+            DisableButtonsInGroupBox(gbHDLD, btn_Huy_HDLD, btn_XacNhan_HDLD);
+            DisableAllInputBoxInGroupBox(gbHDLD);
+            click_Them_HDLD = false;
+            click_Xoa_HDLD = false;
+            txtSoHopDong.Enabled = true;
+            txtSoHopDong.Text = "";
+            dateNgayBD.Value = DateTime.Today;
+            dateNgayKT.Value = DateTime.Today;
+            txtMaNV_HopDong.Text = "";
+            cbbMaCV.SelectedIndex = 0;
+            dgvContract.CurrentCell = null;
+            resetButtonColor(btn_Them_HDLD);
+            resetButtonColor(btn_Xoa_HDLD);
+        }
+
+        private void btn_XacNhan_HDLD_Click(object sender, EventArgs e)
+        {
+            if (click_Them_HDLD)
+            {
+                if (string.IsNullOrEmpty(txtMaNV_HopDong.Text))
+                {
+                    MessageBox.Show("Không được để tróng mã nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (dateNgayBD.Value > dateNgayKT.Value)
+                {
+                    MessageBox.Show("Ngày kết thúc phải sau ngày bắt đầu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    //Convert.ToInt32(txtPosID.Text), txtPosName.Text.ToString(), Convert.ToInt32(txtSalary.Text), 0
+                    Contract contract = new Contract(Convert.ToInt32(txtSoHopDong.Text.ToString()), dateNgayBD.Value, dateNgayKT.Value, Convert.ToInt32(txtMaNV_HopDong.Text.ToString()),cbbMaCV.SelectedIndex, 0);
+                    if (contractBLL.InsertContract(contract))
+                    {
+                        MessageBox.Show("Thêm hợp đồng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadContract();
+                        resetButtonColor(btn_Them_HDLD);
+                    }
+                }
+            }
+            else if (click_Xoa_HDLD)
+            {
+                if (string.IsNullOrEmpty(txtSoHopDong.Text))
+                {
+                    MessageBox.Show("Không được để trống số hợp đồng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (!contractBLL.CheckContractNoExist(Convert.ToInt32(txtSoHopDong.Text)))
+                {
+                    MessageBox.Show("Mã hợp đồng không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    if (contractBLL.DeleteContract(Convert.ToInt32(txtSoHopDong.Text.ToString())))
+                    {
+                        MessageBox.Show("Xóa hợp đồng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadContract();
+                        resetButtonColor(btn_Xoa_HDLD);
+                    }
+                }
+
+            }
+        }
+
+
     }
 }
