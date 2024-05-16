@@ -9,7 +9,7 @@ namespace DAL
 {
     public class ThongKeDoanhThuDAL
     {
-        DataServices dataServices = new DataServices();
+        DatabaseConnection dataServices = new DatabaseConnection();
         DataTable dataTable;
 
         public ThongKeDoanhThuDAL()

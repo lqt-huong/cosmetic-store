@@ -58,7 +58,7 @@ namespace DAL
 
         public bool DaTinhLuong(int month, int year)
         {
-            string sql = $"SELECT * FROM Account WHERE Month = {month} AND Year = {year}";
+            string sql = $"SELECT * FROM MonthlySalary WHERE Month = {month} AND Year = {year}";
             dataTable = dataServices.RunQuery(sql);
             if (dataTable.Rows.Count == 0) return false;
             return true;

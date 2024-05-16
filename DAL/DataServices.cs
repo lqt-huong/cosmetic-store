@@ -8,8 +8,8 @@ namespace DAL
     {
         //const string CONNECTION_STRING = @"Data Source=DESKTOP-PT451IS\MSSQLSERVER01;Initial Catalog=English_Centre1;Integrated Security=True"; //connection string của Nhi
         //const string CONNECTION_STRING = @"Data Source=DESKTOP-2138EM5\SQLEXPRESS;Initial Catalog=English_Centre;Integrated Security=True"; //connection string của Phát
-        //const string CONNECTION_STRING = @"Data Source=JOSIE;Initial Catalog=English_Centre;Integrated Security=True"; //connection string của TH
-        const string CONNECTION_STRING = @"Data Source=DESKTOP-D29FRPQ\MSSQL2022;Initial Catalog=cosmetic-store;Integrated Security=True"; ////connection string của Yang
+        const string CONNECTION_STRING = @"Data Source=JOSIE;Initial Catalog=English_Centre;Integrated Security=True"; //connection string của TH
+        //const string CONNECTION_STRING = @"Data Source=DESKTOP-D29FRPQ\MSSQL2022;Initial Catalog=cosmetic-store;Integrated Security=True"; ////connection string của Yang
         SqlConnection conn;
         SqlDataAdapter adapter;
 

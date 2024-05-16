@@ -11,7 +11,7 @@ namespace DAL
 {
     public class SaleBillDAL
     {
-        DataServices dataServices = new DataServices();
+        DatabaseConnection dataServices = new DatabaseConnection();
         DataTable dataTable;
 
         public SaleBillDAL()

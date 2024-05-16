@@ -10,7 +10,7 @@ namespace DAL
 {
     public class BillDetailsDAL
     {
-        DataServices dataServices = new DataServices();
+        DatabaseConnection dataServices = new DatabaseConnection();
         DataTable dataTable;
 
         public BillDetailsDAL()
@@ -40,20 +40,13 @@ namespace DAL
 
         public bool Insert(BillDetails bd)
         {
-            string sql = "SELECT * FROM BillDetails";
-            dataTable = dataServices.RunQuery(sql);
-            DataRow row = dataTable.NewRow();
-            row["BillID"] = bd.BillID;
-            row["VarietyID"] = bd.VarietyID;
-            row["Price"] = bd.Price;
-            row["Quantity"] = bd.Quantity;
-            dataTable.Rows.Add(row);
-            dataServices.Update(dataTable);
+            string sql = $"INSERT INTO BillDetails VALUES({bd.BillID},{bd.VarietyID},{bd.Quantity},{bd.Price})";
+            dataServices.ExecuteNonQuery(sql);
 
             sql = $"UPDATE ProductVariety WHERE VarietyID = {bd.VarietyID} SET Quantity = Quantity - {bd.Quantity}";
             dataServices.ExecuteNonQuery(sql);
 
-            sql = $"UPDATE SaleBill WHERE BillID = {row["BillID"]} SET TotalValue = TotalValue + {bd.Quantity*bd.Price}";
+            sql = $"UPDATE SaleBill WHERE BillID = {bd.BillID} SET TotalValue = TotalValue + {bd.Quantity*bd.Price}";
             dataServices.ExecuteNonQuery(sql);
             return true;
         }

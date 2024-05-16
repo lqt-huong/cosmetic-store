@@ -24,6 +24,11 @@ namespace Cosmetic_Store
         List<Contract> contractList = new List<Contract>();
         static Account loggedInAcc;
         private const string placeholderText = "Nhận tên nhân viên cần tìm...";
+
+        List<MonthlySalary> listLuong = new List<MonthlySalary>();
+        List<Staff> listNV = new List<Staff>();
+        MonthlySalaryBLL bllLuong = new MonthlySalaryBLL();
+        StaffBLL bllNV = new StaffBLL();
         public QuanLyNhanSu()
         {
             InitializeComponent();
@@ -34,6 +39,30 @@ namespace Cosmetic_Store
             LoadTTCN();
             LoadThongKe();
             LoadContract();
+            try
+            {
+                if (loggedInAcc.PermissionID != 2 && loggedInAcc.PermissionID != 6 && loggedInAcc.PermissionID != 1)
+                {
+                    tabQLNS.TabPages.Remove(tabTTNS);
+                    tabQLNS.TabPages.Remove(tabCV);
+                    tabQLNS.TabPages.Remove(tabNghiPhep);
+                    tabQLNS.TabPages.Remove(tabThongKe);
+                    tabQLNS.TabPages.Remove(tabLuong);
+                    tabQLNS.TabPages.Remove(tabHDLD);
+                }
+                else if (loggedInAcc.PermissionID == 1)
+                {
+                    tabQLNS.TabPages.Remove(tabNghiPhep);
+                    tabQLNS.TabPages.Remove(tabLuong);
+                    tabQLNS.TabPages.Remove(tabHDLD);
+                    DisableAllButtonsInGroupBox(gbTTNV_TTNS);
+                    DisableAllButtonsInGroupBox(gbTTCV);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
         }
         //============= THÔNG TIN NHÂN SỰ ============= //
         public void LoadPlaceholderText()
@@ -120,6 +149,18 @@ namespace Cosmetic_Store
             }
         }
 
+        public void DisableAllButtonsInGroupBox(GroupBox groupBox)
+        {
+
+            foreach (Control control in groupBox.Controls)
+            {
+                if (control is Button)
+                {
+                    Button btn = (Button)control;
+                    btn.Enabled = false;
+                }
+            }
+        }
         //enable 2 button truyền vào, disable các button còn lại
         public void EnableButtonsInGroupBox(GroupBox groupBox, Button btn1, Button btn2)
         {
@@ -371,11 +412,11 @@ namespace Cosmetic_Store
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string key = txtTimKiem.Text.Trim(new char[] { ' ' });
-            if(string.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(key))
             {
                 MessageBox.Show("Thanh tìm kiếm trống vui lòng nhập thông tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if(cbbTimKiem.SelectedIndex == 0 && !int.TryParse(key, out int kq))
+            else if (cbbTimKiem.SelectedIndex == 0 && !int.TryParse(key, out int kq))
             {
                 MessageBox.Show("Thông tin nhập sai dữ liệu (không hợp lệ) !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -584,7 +625,7 @@ namespace Cosmetic_Store
             }
         }
 
-        
+
 
         //============= NGHỈ PHÉP ============= //
         public void RequestLoad()
@@ -620,13 +661,13 @@ namespace Cosmetic_Store
                 txtRequestID.Text = row.Cells["RequestID"].Value.ToString();
                 txtLeavingContent.Text = row.Cells["RequestContent"].Value.ToString();
                 txtLeavingType.Text = row.Cells["LeavingType"].Value.ToString();
-                
+
                 //txtLeavingStatus.Text = row.Cells["ApproveStatus"].Value.ToString();
-                if(Convert.ToInt32(row.Cells["ApproveStatus"].Value.ToString()) == 0)
+                if (Convert.ToInt32(row.Cells["ApproveStatus"].Value.ToString()) == 0)
                 {
                     txtLeavingStatus.Text = "Chưa duyệt";
                 }
-                else if(Convert.ToInt32(row.Cells["ApproveStatus"].Value.ToString()) == 1)
+                else if (Convert.ToInt32(row.Cells["ApproveStatus"].Value.ToString()) == 1)
                 {
                     txtLeavingStatus.Text = "Đã duyệt";
                 }
@@ -719,7 +760,7 @@ namespace Cosmetic_Store
             cbbLeavingType_Form.SelectedIndex = 0;
             txtStaffID_Form.Text = currStaff.StaffID.ToString();
 
-            
+
         }
 
         static bool click_GuiDon = false;
@@ -746,7 +787,7 @@ namespace Cosmetic_Store
 
         private void btn_XacNhan_Form_Click(object sender, EventArgs e)
         {
-            if(click_GuiDon)
+            if (click_GuiDon)
             {
                 if (string.IsNullOrEmpty(txtleavingDays_Form.Text.ToString()))
                 {
@@ -759,7 +800,7 @@ namespace Cosmetic_Store
                 else
                 {//Convert.ToInt32(txtPosID.Text), txtPosName.Text.ToString(), Convert.ToInt32(txtSalary.Text), 0
                     int requestID = requestBLL.AutoID();
-                    LeaveRequest request = new LeaveRequest(requestID, 0, txtContent_Form.Text.ToString(), dateLeavingDate_Form.Value, Convert.ToInt32(txtleavingDays_Form.Text.ToString()), cbbLeavingType_Form.SelectedIndex , Convert.ToInt32(txtStaffID_Form.Text.ToString()));
+                    LeaveRequest request = new LeaveRequest(requestID, 0, txtContent_Form.Text.ToString(), dateLeavingDate_Form.Value, Convert.ToInt32(txtleavingDays_Form.Text.ToString()), cbbLeavingType_Form.SelectedIndex, Convert.ToInt32(txtStaffID_Form.Text.ToString()));
                     if (requestBLL.InsertLeaveRequest(request))
                     {
                         MessageBox.Show("Gửi đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -784,7 +825,7 @@ namespace Cosmetic_Store
 
         private void btn_XacNhan_TTCN_Click(object sender, EventArgs e)
         {
-            if(click_Sua_TTNV)
+            if (click_Sua_TTNV)
             {
                 if (string.IsNullOrEmpty(txtFullName_TTNV.Text.ToString()))
                 {
@@ -819,7 +860,7 @@ namespace Cosmetic_Store
         }
 
         //============= THỐNG KÊ LƯƠNG THEO CHỨC VỤ============= //
-       public void LoadThongKe()
+        public void LoadThongKe()
         {
             dgvThongKeNV_CV.Rows.Clear();
             DataTable dt = staffBLL.ThongKeNhanVienTheoCV();
@@ -960,7 +1001,7 @@ namespace Cosmetic_Store
                 else
                 {
                     //Convert.ToInt32(txtPosID.Text), txtPosName.Text.ToString(), Convert.ToInt32(txtSalary.Text), 0
-                    Contract contract = new Contract(Convert.ToInt32(txtSoHopDong.Text.ToString()), dateNgayBD.Value, dateNgayKT.Value, Convert.ToInt32(txtMaNV_HopDong.Text.ToString()),cbbMaCV.SelectedIndex, 0);
+                    Contract contract = new Contract(Convert.ToInt32(txtSoHopDong.Text.ToString()), dateNgayBD.Value, dateNgayKT.Value, Convert.ToInt32(txtMaNV_HopDong.Text.ToString()), cbbMaCV.SelectedIndex, 0);
                     if (contractBLL.InsertContract(contract))
                     {
                         MessageBox.Show("Thêm hợp đồng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -992,6 +1033,83 @@ namespace Cosmetic_Store
             }
         }
 
+        //============= LƯƠNG ============= //
+        private void LoadBangLuong(int month, int year)
+        {
+            listLuong = bllLuong.GetAll(month, year);
+            dgvLuong.Rows.Clear();
+            for (int i = 0; i < listLuong.Count; i++)
+            {
+                DataGridViewRow newRow = new DataGridViewRow();
 
+                newRow.CreateCells(dgvLuong);
+                newRow.Cells[0].Value = listLuong[i].StaffID;
+                newRow.Cells[1].Value = listLuong[i].Month;
+                newRow.Cells[2].Value = listLuong[i].Year;
+                newRow.Cells[3].Value = listLuong[i].PositionID;
+                newRow.Cells[4].Value = listLuong[i].TotalLeavingDays;
+                newRow.Cells[5].Value = listLuong[i].ActualReceiving;
+
+                dgvLuong.Rows.Add(newRow);
+            }
+        }
+
+        private void btnTinhLuong_Click(object sender, EventArgs e)
+        {
+            int parsing = -1;
+            if (String.IsNullOrWhiteSpace(cbxThang_Luong.SelectedItem.ToString()) || String.IsNullOrWhiteSpace(txtNamTinhLuong.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đủ tháng và năm cần tính lương!", "Thông báo");
+            }
+            else if (!int.TryParse(txtNamTinhLuong.Text, out parsing) || parsing <= 0)
+            {
+                MessageBox.Show("Năm đã nhập không hợp lệ!", "Thông báo");
+            }
+            else if (bllLuong.DaTinhLuong(Convert.ToInt32(cbxThang_Luong.SelectedItem.ToString()), Convert.ToInt32(txtNamTinhLuong.Text)))
+            {
+                LoadBangLuong(Convert.ToInt32(cbxThang_Luong.SelectedItem.ToString()), Convert.ToInt32(txtNamTinhLuong.Text));
+            }
+            else
+            {
+                //tinh luong
+                listNV = bllNV.GetAllStaff();
+                int month = Convert.ToInt32(cbxThang_Luong.SelectedItem);
+                int year = Convert.ToInt32(txtNamTinhLuong.Text);
+
+                foreach (Staff nv in listNV)
+                {
+                    int positionID = bllLuong.GetPositionID(nv.StaffID, month, year);
+                    int tongNgayNghi = bllLuong.tongNgayNghi(nv.StaffID, month, year);
+                    MonthlySalary luong = new MonthlySalary(nv.StaffID, month, year, positionID, tongNgayNghi, bllLuong.calcThucNhan(positionID, tongNgayNghi));
+                    if (!bllLuong.Insert(luong))
+                    {
+                        MessageBox.Show("Đã xảy ra lỗi trong quá trình tính lương!", "Thông báo");
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void dgvLuong_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //txtMaNV_Luong.Text = dgvLuong.SelectedRows[0].Cells[0].Value.ToString();
+            //txtThang_Luong.Text = dgvLuong.SelectedRows[0].Cells[1].Value.ToString();
+            //txtNam_Luong.Text = dgvLuong.SelectedRows[0].Cells[2].Value.ToString();
+            //txtMaCV_Luong.Text = dgvLuong.SelectedRows[0].Cells[3].Value.ToString();
+            //txtNgayNghi_Luong.Text = dgvLuong.SelectedRows[0].Cells[4].Value.ToString();
+            //txtThucNhan_Luong.Text = dgvLuong.SelectedRows[0].Cells[5].Value.ToString();
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check if a valid row is clicked
+            {
+                //Get the DataGridViewRow corresponding to the clicked row
+                DataGridViewRow row = dgvLuong.Rows[e.RowIndex];
+                txtMaNV_Luong.Text = row.Cells["colMaNV_Luong"].Value.ToString();
+                txtThang_Luong.Text = row.Cells["colThang_Luong"].Value.ToString();
+                txtNam_Luong.Text = row.Cells["colNam_Luong"].Value.ToString();
+                txtMaCV_Luong.Text = row.Cells["colMaCV_Luong"].Value.ToString();
+                txtNgayNghi_Luong.Text = row.Cells["colNgayNghi_Luong"].Value.ToString();
+                txtThucNhan_Luong.Text = row.Cells["colThucNhan_Luong"].Value.ToString();
+
+            }
+        }
     }
 }
