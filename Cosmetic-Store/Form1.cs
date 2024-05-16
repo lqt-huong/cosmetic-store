@@ -64,6 +64,9 @@ namespace Cosmetic_Store
                     case 5:
                         btnQLNS.Visible = true;
                         break;
+                    case 6:
+                        btnQLKD.Visible = true;
+                        break;
                 }
             }
         }

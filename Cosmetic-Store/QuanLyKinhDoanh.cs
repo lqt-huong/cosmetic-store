@@ -53,6 +53,28 @@ namespace Cosmetic_Store
             loggedIn = Form1.LoggedInAccount;
             LoadThongKeDoanhThu();
             LoadCbbMaLoaiSP();
+
+            try
+            {
+                if (loggedIn.PermissionID != 4 && loggedIn.PermissionID != 1 && loggedIn.PermissionID != 6)
+                {
+                    tabControl1.TabPages.Remove(tabPage1);
+                    tabControl1.TabPages.Remove(tabPage2);
+                    btnXoaHD.Enabled = false;
+                }
+                else if (loggedIn.PermissionID == 1)
+                {
+                    btnXoaHD.Enabled = false;
+                    btnThemHD.Enabled = false;
+                    btnThemCT.Enabled = false;
+                    btnXoaCT.Enabled = false;
+                    btnCNCT.Enabled = false;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         private void LoadCbbMaLoaiSP()
@@ -193,7 +215,7 @@ namespace Cosmetic_Store
             con = new SqlConnection(connectstring);
             try
             {
-                
+
 
                 SqlCommand cmdDT = new SqlCommand("SELECT sb.Date AS 'Ngày', SUM(sb.TotalValue) AS 'Tổng tiền' " +
                                                 "FROM SaleBill sb " +
@@ -424,7 +446,7 @@ namespace Cosmetic_Store
             }
         }
 
-        private void LoadDataGridHD ()
+        private void LoadDataGridHD()
         {
             listHD = bllHD.getAll();
             dgvHoaDon.Rows.Clear();
@@ -542,6 +564,10 @@ namespace Cosmetic_Store
             {
                 MessageBox.Show("Vui lòng nhập thông tin cần thêm!", "Thông báo");
             }
+            else if (bllCTHD.TrungMa(selectedBill, Convert.ToInt32(txtVarietyID_CT.Text)))
+            {
+                MessageBox.Show("Sản phẩm này đã được thêm!", "Thông báo");
+            }
             else
             {
                 BillDetails ct = new BillDetails(selectedBill, Convert.ToInt32(txtVarietyID_CT.Text), Convert.ToInt32(txtPrice_CT.Text), Convert.ToInt32(txtQuantity_CT.Text));
@@ -617,6 +643,12 @@ namespace Cosmetic_Store
                 {
                     MessageBox.Show(bllCTHD.Delete(selectedBill, Convert.ToInt32(txtVarietyID_CT.Text)), "Thông báo");
                     LoadCTHD(selectedBill);
+                    isDeleting = false;
+                    btnThemCT.Enabled = true;
+                    btnCNCT.Enabled = true;
+                    btnXoaCT.Enabled = true;
+                    btnXNCT.Enabled = false;
+                    btnHuyCT.Enabled = false;
                 }
             }
             else if (isUpdating)
@@ -634,6 +666,12 @@ namespace Cosmetic_Store
                     BillDetails ct = new BillDetails(selectedBill, Convert.ToInt32(txtVarietyID_CT.Text), Convert.ToInt32(txtPrice_CT.Text), Convert.ToInt32(txtQuantity_CT.Text));
                     MessageBox.Show(bllCTHD.Update(ct), "Thông báo");
                     LoadCTHD(selectedBill);
+                    isUpdating = false;
+                    btnThemCT.Enabled = true;
+                    btnCNCT.Enabled = true;
+                    btnXoaCT.Enabled = true;
+                    btnXNCT.Enabled = false;
+                    btnHuyCT.Enabled = false;
                 }
             }
         }

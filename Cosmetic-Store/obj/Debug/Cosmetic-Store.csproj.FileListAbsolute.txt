@@ -109,3 +109,5 @@ F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\bin\
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\bin\Debug\System.Threading.Tasks.Extensions.xml
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\bin\Debug\DAL.pdb
 F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\Cosmetic-Store\Cosmetic-Store\obj\Debug\Cosmetic_Store.testform.resources
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\cosmetic-store\Cosmetic-Store\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+F:\OneDrive\Desktop\Senior\2ndSemester\HTTTDN\cosmetic-store\Cosmetic-Store\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

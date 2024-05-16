@@ -63,6 +63,7 @@
     <Compile Include="StaffDAL.cs" />
     <Compile Include="testDAL.cs" />
     <Compile Include="ThongKeDoanhThuDAL.cs" />
+    <Compile Include="ThongTinSanPhamDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SaleBillDAL.cs" />
